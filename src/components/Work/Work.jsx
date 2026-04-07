@@ -16,42 +16,36 @@ export default function Work() {
     {
       id: 1,
       title: "Eternal Union",
-      category: "Wedding",
       size: "tall",
       image: img1
     },
     {
       id: 2,
       title: "Golden Hour",
-      category: "Portrait",
       size: "wide",
       image: img2
     },
     {
       id: 3,
       title: "The Heritage",
-      category: "Architecture",
       size: "slim",
       image: img3
     },
     {
       id: 4,
       title: "Velvet Nights",
-      category: "Cinematic",
       size: "tall",
       image: img4
     },
     {
       id: 5,
       title: "Soulful Eyes",
-      category: "Portrait",
       size: "wide",
       image: img5
     },
     {
       id: 6,
       title: "Vows in Silence",
-      category: "Wedding",
       size: "large",
       image: img6
     },
