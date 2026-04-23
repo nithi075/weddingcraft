@@ -1,209 +1,272 @@
-/* --- HERO SECTION - FULL UPDATED CODE --- */
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Great+Vibes&display=swap');
 
+:root {
+  --gold: #c5a059;
+  --gold-dark: #a77f36;
+  --white: #ffffff;
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-accent: 'Great Vibes', cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #fcfaf7;
+  color: var(--black);
+}
+
+/* ================= HERO SECTION ================= */
 .hero {
   position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
   overflow: hidden;
-  background: #fdfbf8; /* Ivory background */
 }
 
-/* Background & Cinematic Effects */
 .hero-bg {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  inset: 0;
 }
 
-.hero-img {
+.hero-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.05);
-  filter: brightness(0.95) contrast(1.02) sepia(5%); 
-  transition: transform 10s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.hero:hover .hero-img {
-  transform: scale(1);
-}
-
-.hero-overlay {
+.hero::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(280, 251, 248, 0.5),
-    rgba(253, 251, 248, 0.4)
-  );
-  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
 }
 
-.hero-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(253, 251, 248, 0) 40%,
-    rgba(253, 251, 248, 0.6) 100%
-  );
-  z-index: 3;
-}
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  pointer-events: none;
-  z-index: 4;
-}
-
-/* Content & Typography */
-.hero-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  max-width: 1000px;
-  padding: 20px;
-}
-
-.hero-text-wrapper {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-tag {
-  font-family: 'Outfit', sans-serif;
-  letter-spacing: 5px;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  color: #b3945a; /* Gold accent */
-  margin-bottom: 25px;
-  font-weight: 500;
-  display: block;
-}
-
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 7.5vw, 6rem);
-  line-height: 1.1;
-  color: #1a1a1a; /* Deep Charcoal */
-  letter-spacing: -0.5px;
-  margin-bottom: 35px;
-}
-
-.accent-text {
-  font-style: italic;
-  font-weight: 400;
-  background: linear-gradient(90deg, #b3945a, #1a1a1a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #b3945a, transparent);
-  margin: 40px auto;
-  opacity: 0.6;
-}
-
-.hero-description {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #333;
-  line-height: 1.8;
-  margin-bottom: 50px;
-  font-weight: 300;
-}
-
-.hero-description span {
-  display: block;
-  margin-top: 12px;
-  font-size: 0.65rem;
-  letter-spacing: 6px;
-  color: #b3945a;
-  font-weight: 500;
-}
-
-/* --- BUTTONS (Centered & Uniform) --- */
-.hero-actions {
   display: flex;
-  gap: 25px;
-  justify-content: center; /* Desktop Center */
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+.logo {
+  display: flex;
   align-items: center;
 }
 
-.btn-premium, .btn-outline {
-  display: inline-block;
-  padding: 18px 45px;
-  font-family: 'Outfit', sans-serif;
-  letter-spacing: 3px;
-  font-size: 0.7rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  min-width: 220px; /* Rendu button-um ore width-la irukkum */
+.logo img {
+  height: 55px;
+  width: auto;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: black;
+  flex: 1;
   text-align: center;
 }
 
-.btn-premium {
-  background: #1a1a1a;
-  color: #fdfbf8;
-  border: 1px solid #1a1a1a;
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  align-items: center;
 }
 
-.btn-premium:hover {
+/* FIXED anchor styling */
+.nav-links li a {
+  text-decoration: none;   /* underline removed */
+  color: #333;             /* visible on white navbar */
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--gold);
+}
+
+/* Button */
+.nav-btn {
+  padding: 10px 22px;
+  border: none;
+  background: var(--gold);
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.nav-btn:hover {
+  background: var(--gold-dark);
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+/* ================= HERO CONTENT ================= */
+.hero-overlay {
+  position: relative;
+  z-index: 5;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.sub-title {
+  font-family: var(--font-accent);
+  font-size: 2rem;
+  color: var(--gold);
+}
+
+.hero-overlay h1 {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  margin-top: 10px;
+}
+
+.hero-overlay p {
+  max-width: 600px;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.hero-btns {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.hero-btn,
+.hero-btn-outline {
+  padding: 14px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.hero-btn {
+  background: var(--gold);
+  color: white;
+  border: none;
+}
+
+.hero-btn-outline {
   background: transparent;
-  color: #1a1a1a;
+  border: 1px solid white;
+  color: white;
 }
 
-.btn-outline {
-  border: 1px solid rgba(26, 26, 26, 0.2);
-  color: #1a1a1a;
-  background: transparent;
+/* ================= MOBILE ================= */
+@media (max-width: 767px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .desktop-btn {
+    display: none;
+  }
+
+  .brand-title {
+    font-size: 1.25rem;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+    gap: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+  }
 }
 
-.btn-outline:hover {
-  border-color: #1a1a1a;
-  background: rgba(26, 26, 26, 0.03);
+/* ================= TABLET & DESKTOP ================= */
+@media (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
+
+  .brand-title {
+    display: none;
+  }
+}
+/* hero bg slider */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
 }
 
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-  .hero { 
-    height: 95vh; 
-  }
-  
-  .hero-title { 
-    font-size: 2.8rem; 
-  }
+.hero-bg img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
 
-  .hero-actions { 
-    flex-direction: column; /* Buttons-a onnu mela onnu stack pannum */
-    gap: 15px; 
-    width: 100%; 
-    max-width: 320px; /* Container width control for mobile */
-    margin: 0 auto;   /* Container-aiyum center pannum */
-  }
+.hero-bg img.active-slide {
+  opacity: 1;
+}
 
-  .btn-premium, .btn-outline { 
-    width: 100%; 
-    min-width: unset; /* Mobile-la auto scale */
-    padding: 18px 0; 
-  }
+/* dark overlay effect */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 0;
 }

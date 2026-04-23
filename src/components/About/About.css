@@ -1,174 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400&display=swap');
+
+/* section */
 .about {
+  background: #f4f1ea;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}
+
+/* text area */
+.about h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+/* paragraph */
+.about p {
+  font-family: Montserrat;
+  font-size: 0.75rem;
+  color: #666;
+  max-width: 320px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+/* button */
+.about button {
+  margin-top: 18px;
+  background: #c5a059;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+/* ---------------- IMAGE SECTION ---------------- */
+
+.about-images {
   position: relative;
-  padding: 160px 6%;
-  background-color: #0c0c0c; /* Deep Obsidian */
-  color: #f5f5f5;
-  overflow: hidden;
+  width: 100%;
+  max-width: 380px;
+  height: 500px;
 }
 
-.about-grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.04;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  pointer-events: none;
-}
-
-.about-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-/* --- Header --- */
-.about-header {
-  margin-bottom: 100px;
-}
-
-.about-tag {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: #b3945a; /* Gold accent */
-  margin-bottom: 25px;
+/* main top image */
+.main-img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
   display: block;
 }
 
-.about-statement {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
-  line-height: 1.15;
-  font-weight: 500;
-  color: #ffffff;
+/* small overlapping image */
+.small-img {
+  position: absolute;
+  bottom: 40px;   /* overlap on main image */
+  right: 0;
+  width: 220px;
+  height: 140px;
+  object-fit: cover;
+  border: 5px solid #f4f1ea;
 }
 
-.about-statement .italic-text {
-  font-style: italic;
-  font-weight: 400;
-  opacity: 0.8;
-  color: #b3945a;
-}
-
-.about-divider {
-  width: 60px;
-  height: 1px;
-  background: #b3945a;
-  margin-top: 40px;
-  opacity: 0.5;
-}
-
-/* --- Content Grid --- */
-.about-content-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 100px;
+/* experience badge */
+.experience-box {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 110px;
+  height: 110px;
+  background: #c5a059;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-/* Quote Side */
-.minimal-quote-box {
-  padding-right: 40px;
+/* badge number */
+.experience-box h3 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
 }
 
-.about-quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-style: italic;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 300;
+/* badge text */
+.experience-box p {
+  font-size: 0.65rem;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+  color: black;
 }
 
-/* Description Side */
-.about-description {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
-  line-height: 2;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 60px;
-  letter-spacing: 0.5px;
-}
+/* ---------------- TABLET ---------------- */
 
-.about-description strong {
-  color: #ffffff;
-  font-weight: 500;
-}
-
-/* Signature */
-.about-signature {
-  position: relative;
-  width: fit-content;
-}
-
-.sig-line-top {
-  width: 100%;
-  height: 1px;
-  background: rgba(179, 148, 90, 0.3);
-  margin-bottom: 20px;
-}
-
-.sig-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.sig-brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-}
-
-.sig-year {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.6rem;
-  letter-spacing: 4px;
-  color: #b3945a;
-}
-
-/* --- Responsive Updates --- */
-@media (max-width: 900px) {
+@media (min-width: 768px) {
   .about {
-    padding: 100px 7% 80px;
-  }
-
-  .about-content-grid {
-    grid-template-columns: 1fr;
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
     gap: 60px;
   }
 
-  .about-header {
-    text-align: center;
-    margin-bottom: 60px;
+  .about div {
+    max-width: 400px;
   }
 
-  .about-divider {
-    margin: 30px auto 0;
+  .about p {
+    margin: 0;
   }
 
-  .minimal-quote-box {
-    padding-right: 0;
-    text-align: center;
-    border-left: none;
+  .about-images {
+    max-width: 450px;
+    height: 550px;
   }
 
-  .about-quote {
-    font-size: 1.4rem;
+  .main-img {
+    height: 400px;
   }
 
-  .about-description {
-    text-align: center;
-    margin-bottom: 40px;
+  .small-img {
+    width: 250px;
+    height: 160px;
+    bottom: 50px;
+  }
+}
+
+/* ---------------- DESKTOP ---------------- */
+
+@media (min-width: 1024px) {
+  .about {
+    padding: 80px 20px;
   }
 
-  .about-signature {
-    margin: 0 auto;
-    text-align: center;
+  .about h2 {
+    font-size: 2rem;
   }
 
-  .sig-line-top {
-    margin: 0 auto 20px;
+  .about p {
+    font-size: 0.9rem;
+  }
+
+  .about-images {
+    max-width: 500px;
+    height: 600px;
+  }
+
+  .main-img {
+    height: 450px;
+  }
+
+  .small-img {
+    width: 280px;
+    height: 180px;
+    bottom: 60px;
   }
 }

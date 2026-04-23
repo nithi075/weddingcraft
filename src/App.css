@@ -1,41 +1,42 @@
-/* remove default browser spacing */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
-/* remove body gap */
-html, body{
-  width:100%;
-  overflow-x:hidden;
-}
-
-/* remove image bottom gap */
-img{
-  display:block;
-  max-width:100%;
-}
-
-/* remove extra space between sections */
-section{
-  margin:0;
-}
-
-/* optional smoother scroll */
-html{
-  scroll-behavior:smooth;
-}
 :root {
-  /* Light Theme Colors */
-  --bg-light: #fdfbf8;
-  --text-dark: #1a1a1a;
-  
-  /* Dark Theme Colors */
-  --bg-dark: #0c0c0c;
-  --text-light: #f5f5f5;
-  
-  /* Common Accent */
-  --accent-gold: #b3945a;
-  --easing: cubic-bezier(0.83, 0, 0.17, 1);
+  --heading-font: "Cormorant Garamond", serif;
+  --body-font: "Montserrat", sans-serif;
+  --gold: #b08d57;
+  --bg-color: #fcfaf7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  background: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+/* All headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Paragraphs */
+p, span, li, a, button {
+  font-family: var(--body-font);
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
 }

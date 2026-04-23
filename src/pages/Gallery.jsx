@@ -1,68 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Gallery.css";
 
-// Replace these with your actual local file paths
-import wedding from "../assets/img2.jpeg";
+import wedding from "../assets/img2.jpg";
 import wedding2 from "../assets/img1.jpeg";
-import couple from "../assets/img3.jpeg";
-import portrait from "../assets/img4.jpeg";
-import candid from "../assets/img5.jpeg";
-import engagement from "../assets/img6.jpeg";
-import reception from "../assets/img7.jpeg";
-import bride from "../assets/img9.jpeg";
-import traditional from "../assets/img8.jpeg";
-import cinematic from "../assets/img10.jpeg";
+import couple from "../assets/img3.jpg";
+import portrait from "../assets/img4.jpg";
+import candid from "../assets/img5.jpg";
 
 export default function Gallery() {
   const items = [
-    { title: "Wedding Photography", img: wedding, isFeatured: true },
-    { title: "Baby Shower Photography", img: wedding2, isFeatured: false },
-    { title: "Couple Moments", img: couple, isFeatured: false },
-    { title: "Portrait Studio", img: portrait, isFeatured: true },
-    { title: "Candid Photography", img: candid, isFeatured: false },
-    { title: "Engagement Shoot",       img: engagement, isFeatured: false },
-    { title: "Reception Coverage",  img: reception, isFeatured: false },
-    { title: "Bridal Portraits",  img: bride, isFeatured: true },
-    { title: "Traditional Wedding",  img: traditional, isFeatured: false },
-    { title: "Maternity Shoots",  img: cinematic, isFeatured: false },
+     {
+      title: "Baby Shower",
+      category: "Celebrations",
+      img: wedding2
+    },
+    {
+      title: "Wedding Photography",
+      category: "Luxury Weddings",
+      img: wedding
+    },
+   
+    {
+      title: "Couple Moments",
+      category: "Love Stories",
+      img: couple
+    },
+    {
+      title: "Portrait Studio",
+      category: "Portraits",
+      img: portrait
+    },
+    {
+      title: "Bride Photography",
+      category: "Moments",
+      img: candid
+    }
   ];
 
-  return (
-    <section className="gallery">
-      {/* Header Section */}
-      <div className="gallery-header">
-        <span className="gallery-tag">Portfolio Collection</span>
-        <h2 className="gallery-title">Timeless Visual Stories</h2>
-        <p className="gallery-subtitle">
-          Explore our signature photography collections crafted
-          with timeless elegance and cinematic storytelling.
-        </p>
-        <a
-          href="https://wa.me/919659414250?text=Hello%20Mithuna%20Photography,%20I%20want%20to%20book%20a%20photoshoot"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="gallery-cta"
-        >
-          Book Your Session
-        </a>
-      </div>
+  // 2nd image default center
+  const [activeIndex, setActiveIndex] = useState(1);
 
-      {/* Grid Section */}
-      <div className="gallery-masonry">
-        {items.map((item, index) => (
-          <div 
-            className={`gallery-item ${item.isFeatured ? "featured" : ""}`} 
-            key={index}
-          >
-            <div className="gallery-image-box">
-              <img src={item.img} alt={item.title} loading="lazy" />
-              <div className="gallery-info">
-                <span className="item-category">{item.category}</span>
-                <h3 className="item-title">{item.title}</h3>
-                <div className="item-arrow">→</div>
+  return (
+    <section className="portfolio">
+      <span className="p-tag">
+        Portfolio Collection
+      </span>
+
+      <h2>Timeless Visual Stories</h2>
+
+      <div className="portfolio-slider">
+        {items.map((item, index) => {
+          let position = index - activeIndex;
+
+          return (
+            <div
+              key={index}
+              className={`portfolio-card ${
+                index === activeIndex ? "active" : ""
+              }`}
+              style={{
+                transform: `translateX(${position * 220}px) scale(${
+                  index === activeIndex ? 1 : 0.85
+                })`,
+                zIndex: index === activeIndex ? 5 : 1
+              }}
+              onClick={() => setActiveIndex(index)}
+            >
+              <img
+                src={item.img}
+                alt={item.title}
+              />
+
+              <div className="overlay">
+                <p>{item.category}</p>
+                <h3>{item.title}</h3>
               </div>
             </div>
-          </div>
+          );
+        })}
+      </div>
+
+      {/* Pagination dots */}
+      <div className="pagination">
+        {items.map((_, index) => (
+          <div
+            key={index}
+            className={`dot ${
+              index === activeIndex ? "active" : ""
+            }`}
+            onClick={() => setActiveIndex(index)}
+          ></div>
         ))}
       </div>
     </section>

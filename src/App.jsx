@@ -1,64 +1,74 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
 
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
-import Work from "./components/Work/Work";
-import Services from "./components/Services/Services";
-import Contact from "./components/Contact/Contact";
+import Hero from "./components/hero/Hero";
+import Services from "./components/services/Services";
+import Portfolio from "./components/portfolio/Portfolio";
+import Packages from "./components/packages/Packages";   // NEW
+import Featured from "./components/featured/Featured";
+import About from "./components/about/About";
+import Video from "./components/video/Video";
+import Testimonials from "./components/testimonials/Testimonials";
+import Instagram from "./components/instagram/Instagram";
+import Blog from "./components/blog/Blog";
+import Footer from "./components/footer/Footer";
+import Gallery from "./pages/Gallery";
+import Location from "./components/location/Location";
 
-import Gallery from "./pages/Gallery"; // new page
-import FloatingChat from "./components/floating/floating";
+function App() {
+  return (
+    <>
+      {/* Home Section */}
+      <section id="home">
+        <Hero />
+      </section>
 
+      {/* Services Section */}
+      <section id="services">
+        <Services />
+      </section>
 
-/* Home page layout */
+       <section id="gallery">
+        <Gallery/>
+        </section>
+     
 
-function Home(){
+      {/* Gallery Section */}
+      <section id="gallery">
+        <Featured />
+      </section>
 
-return(
+      {/* About Section */}
+      <section id="about">
+        <About />
+      </section>
 
-<>
+      {/* Video Section */}
+      <section id="packages">
+        <Packages />
+      </section>
+    
 
-<Navbar/>
+      {/* Testimonials Section */}
+      <section id="testimonials">
+        <Testimonials />
+      </section>
 
-<Hero/>
+      {/* Instagram Section */}
+      <section id="instagram">
+        <Instagram />
+      </section>
+      <section id="location">
+        <Location/>
+      </section>
+   
 
-<About/>
-
-<Work/>
-
-<Services/>
-
-<Contact/>
-<FloatingChat/>
-
-</>
-
-);
-
-}
-
-
-/* main app */
-
-function App(){
-
-return(
-
-<BrowserRouter>
-
-<Routes>
-
-<Route path="/" element={<Home/>}/>
-
-<Route path="/gallery" element={<Gallery/>}/>
-
-</Routes>
-
-</BrowserRouter>
-
-);
-
+      {/* Contact Section */}
+      <section id="contact">
+        <Footer />
+      </section>
+   
+    </>
+  );
 }
 
 export default App;

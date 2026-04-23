@@ -1,65 +1,170 @@
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import "./Hero.css";
+import logoimg from "../../assets/logo.png";
+
+// hero images
+import hero1 from "../../assets/hero1.jpg";
+import hero2 from "../../assets/hero2.jpg";
+import hero3 from "../../assets/hero3.jpg";
 
 export default function Hero() {
-  const whatsappNumber = "919659414250";
-  const message =
-    "Hello Mithuna Photography, I would like to book a luxury photography session. Please share details.";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    message
-  )}`;
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Intha URL high-end dark photography vibe kodukkum
-  const heroImageUrl = "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop";
+  const heroImages = [hero1, hero2, hero3];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // auto slide every 5 sec
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) =>
+        prev === heroImages.length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // scroll to gallery section
+  const handlePortfolioClick = () => {
+    const gallerySection = document.getElementById("gallery");
+
+    if (gallerySection) {
+      gallerySection.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  };
+
+  // open whatsapp
+  const handleWhatsAppClick = () => {
+    window.open(
+      "https://wa.me/917092263880",
+      "_blank"
+    );
+  };
 
   return (
-    <section className="hero" id="hero">
-      
-      {/* Background */}
-      <div className="hero-bg">
-        <img 
-          src={heroImageUrl} 
-          alt="Luxury Wedding Photography" 
-          className="hero-img" 
-        />
-        <div className="hero-overlay"></div>
-        <div className="hero-vignette"></div>
-        <div className="hero-grain"></div>
-      </div>
+    <section className="hero" id="home">
 
-      {/* Content */}
-      <div className="hero-content">
-        <div className="hero-text-wrapper">
-       
+      {/* Navbar */}
+      <nav className="navbar">
 
-          <h1 className="hero-title">
-            Capturing Moments <br />
-            <span className="accent-text">That Feel Timeless</span>
-          </h1>
-
-          <div className="hero-divider"></div>
-
-          <p className="hero-description">
-            Cinematic storytelling crafted with emotion & elegance
-            <span>Wedding • Pre-Wedding • Couple • Portrait</span>
-          </p>
-
-          <div className="hero-actions">
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-premium"
-            >
-              Book Session
-            </a>
-
-            <a href="#work" className="btn-outline">
-              View Portfolio
-            </a>
-          </div>
+        <div className="logo">
+          <img src={logoimg} alt="logo" />
         </div>
+
+        <div className="brand-title">
+          The Wedding Craft
+        </div>
+
+        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <li>
+            <a href="#home" onClick={() => setMenuOpen(false)}>
+              Home
+            </a>
+          </li>
+
+          <li>
+            <a href="#gallery" onClick={() => setMenuOpen(false)}>
+              Portfolio
+            </a>
+          </li>
+
+          <li>
+            <a href="#services" onClick={() => setMenuOpen(false)}>
+              Services
+            </a>
+          </li>
+
+          <li>
+            <a href="#gallery" onClick={() => setMenuOpen(false)}>
+              Gallery
+            </a>
+          </li>
+
+          <li>
+            <a href="#testimonials" onClick={() => setMenuOpen(false)}>
+              Testimonials
+            </a>
+          </li>
+
+          <li>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </a>
+          </li>
+        </ul>
+
+        <button className="nav-btn desktop-btn">
+          Check Availability
+        </button>
+
+        <div
+          className="menu-icon"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </div>
+
+      </nav>
+
+      {/* Hero Background Slider */}
+      <div className="hero-bg">
+        {heroImages.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`hero-${index}`}
+            className={
+              index === currentImage
+                ? "active-slide"
+                : ""
+            }
+          />
+        ))}
       </div>
 
+      {/* Hero Content */}
+      <div className="hero-overlay">
+
+        <span className="sub-title">
+          Luxury Wedding Photography
+        </span>
+
+        <h1>
+          Capturing Love,
+          <br />
+          One Frame at a Time
+        </h1>
+
+        <p>
+          From intimate moments to grand celebrations,
+          we preserve every emotion beautifully so your
+          memories last forever.
+        </p>
+
+        <div className="hero-btns">
+
+          {/* Scroll to Gallery */}
+          <button
+            className="hero-btn"
+            onClick={handlePortfolioClick}
+          >
+            View Portfolio
+          </button>
+
+          {/* Open WhatsApp */}
+          <button
+            className="hero-btn-outline"
+            onClick={handleWhatsAppClick}
+          >
+            Book Consultation
+          </button>
+
+        </div>
+
+      </div>
     </section>
   );
 }
