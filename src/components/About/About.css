@@ -2,7 +2,7 @@
 
 /* section */
 .about {
-  background: #f4f1ea;
+  background: #0f0f0f;   /* changed from light to black */
   padding: 50px 20px;
   display: flex;
   flex-direction: column;
@@ -18,13 +18,14 @@
   letter-spacing: 2px;
   font-size: 1.6rem;
   margin-bottom: 10px;
+  color: #ffffff; /* added for visibility */
 }
 
 /* paragraph */
 .about p {
   font-family: Montserrat;
   font-size: 0.75rem;
-  color: #666;
+  color: #d1d1d1; /* updated for dark bg */
   max-width: 320px;
   margin: auto;
   line-height: 1.8;
@@ -62,12 +63,12 @@
 /* small overlapping image */
 .small-img {
   position: absolute;
-  bottom: 40px;   /* overlap on main image */
+  bottom: 40px;
   right: 0;
   width: 220px;
   height: 140px;
   object-fit: cover;
-  border: 5px solid #f4f1ea;
+  border: 5px solid #0f0f0f; /* updated to match black background */
 }
 
 /* experience badge */
@@ -166,13 +167,14 @@
     bottom: 60px;
   }
 }
+
 /* Update the paragraph style to handle multiple blocks */
 .about-text p {
   font-family: "Montserrat", sans-serif;
-  font-size: 0.85rem; /* Slightly larger for better readability */
-  color: #666;
-  max-width: 450px; /* Increased width for longer text */
-  margin-bottom: 15px; /* Space between paragraphs */
+  font-size: 0.85rem;
+  color: #d1d1d1; /* updated for dark theme */
+  max-width: 450px;
+  margin-bottom: 15px;
   line-height: 1.8;
 }
 
