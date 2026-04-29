@@ -12,7 +12,7 @@ import Packages from "./components/packages/Packages";
 import Testimonials from "./components/testimonials/Testimonials";
 import Instagram from "./components/instagram/Instagram";
 import Blog from "./components/blog/Blog";
-import Footer from "./components/footer/Footer";
+import Footer from "./components/footer/footer";
 import Location from "./components/location/Location";
 import FloatingChat from "./components/floating/floating";
 
