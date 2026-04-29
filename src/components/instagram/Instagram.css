@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400&display=swap');
 
 .instagram-section {
-  background: #f4f1ea; /* Matching About Section Background */
+  background: #0f0f0f; /* changed from cream */
   padding: 80px 20px;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
   font-weight: 400;
   letter-spacing: 2px;
   font-size: 2rem;
-  color: #1a1a1a;
+  color: white; /* changed */
   margin-bottom: 10px;
   text-align: center;
 }
@@ -22,7 +22,7 @@
 .insta-sub {
   font-family: Montserrat;
   font-size: 0.85rem;
-  color: #666;
+  color: #bdbdbd; /* changed */
   max-width: 400px;
   margin: 0 auto 20px auto;
   line-height: 1.8;
@@ -32,7 +32,7 @@
 .accent-line-gold {
   width: 60px;
   height: 2px;
-  background: #c5a059; /* About Section Gold */
+  background: #c5a059;
   margin: 0 auto 40px auto;
 }
 
@@ -60,8 +60,8 @@
   height: 480px;
   left: 50%;
   margin-left: -170px;
-  border: 8px solid #ffffff; /* White polaroid-like border */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 8px solid #1a1a1a; /* changed from white */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   cursor: pointer;
   transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -90,7 +90,7 @@
   z-index: 5;
   transform: translateX(-65%) scale(0.8) rotateY(20deg);
   opacity: 0.5;
-  filter: sepia(30%); /* Subtle vintage look */
+  filter: sepia(30%);
 }
 
 .insta-card.right-side {
@@ -105,7 +105,7 @@
   pointer-events: none;
 }
 
-/* Badge Style Overlay (Like Experience Box) */
+/* Badge */
 .insta-badge-overlay {
   position: absolute;
   top: 20px;
@@ -145,7 +145,7 @@
   bottom: 0;
   width: 100%;
   padding: 20px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
   color: white;
   font-family: 'Cormorant Garamond';
   font-size: 1.2rem;
@@ -174,7 +174,8 @@
 }
 
 .insta-follow-btn:hover {
-  background: #1a1a1a;
+  background: #ffffff;
+  color: #0f0f0f;
 }
 
 /* Pagination Dots */
@@ -186,7 +187,7 @@
 .insta-dot {
   width: 6px;
   height: 6px;
-  background: #d1cdc0;
+  background: #444;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -200,7 +201,17 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .insta-slider-container { height: 420px; }
-  .insta-card { width: 260px; height: 380px; margin-left: -130px; }
-  .insta-header h2 { font-size: 1.6rem; }
+  .insta-slider-container {
+    height: 420px;
+  }
+
+  .insta-card {
+    width: 260px;
+    height: 380px;
+    margin-left: -130px;
+  }
+
+  .insta-header h2 {
+    font-size: 1.6rem;
+  }
 }
