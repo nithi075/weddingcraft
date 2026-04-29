@@ -1,10 +1,10 @@
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Great+Vibes&display=swap');
 
 :root {
   --gold: #c5a059;
   --gold-dark: #a77f36;
   --white: #ffffff;
+  --black: #0f0f0f;
 
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Outfit', sans-serif;
@@ -23,8 +23,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: #fcfaf7;
-  color: var(--black);
+  background: var(--black);
+  color: var(--white);
 }
 
 /* ================= HERO SECTION ================= */
@@ -38,19 +38,32 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .hero-bg img {
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 }
 
-.hero::after {
+.hero-bg img.active-slide {
+  opacity: 1;
+}
+
+/* dark overlay */
+.hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
 }
 
 /* ================= NAVBAR ================= */
@@ -66,9 +79,10 @@ body {
   align-items: center;
   padding: 15px 25px;
 
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(10px);
 }
+
 .logo {
   display: flex;
   align-items: center;
@@ -83,7 +97,7 @@ body {
   font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 600;
-  color: black;
+  color: var(--white);
   flex: 1;
   text-align: center;
 }
@@ -96,10 +110,9 @@ body {
   align-items: center;
 }
 
-/* FIXED anchor styling */
 .nav-links li a {
-  text-decoration: none;   /* underline removed */
-  color: #333;             /* visible on white navbar */
+  text-decoration: none;
+  color: var(--white);
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
@@ -163,6 +176,7 @@ body {
   max-width: 600px;
   margin-top: 20px;
   line-height: 1.8;
+  color: #ddd;
 }
 
 .hero-btns {
@@ -193,110 +207,27 @@ body {
 
 /* ================= MOBILE ================= */
 @media (max-width: 767px) {
-  .menu-icon {
-    display: block;
-  }
-
-  .desktop-btn {
-    display: none;
-  }
-
-  .brand-title {
-    font-size: 1.25rem;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: white;
-    flex-direction: column;
-    padding: 20px;
-    display: none;
-    gap: 20px;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .hero-overlay h1 {
-    font-size: 2.3rem;
-  }
-
-  .hero-btns {
-    flex-direction: column;
-  }
-}
-
-/* ================= TABLET & DESKTOP ================= */
-@media (min-width: 768px) {
-  .menu-icon {
-    display: none;
-  }
-
-  .brand-title {
-    display: none;
-  }
-}
-/* hero bg slider */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.hero-bg img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
-
-.hero-bg img.active-slide {
-  opacity: 1;
-}
-
-/* dark overlay effect */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 0;
-}
-/* ================= MOBILE ================= */
-@media (max-width: 767px) {
 
   .navbar {
     padding: 12px 18px;
   }
 
-  /* smaller logo */
   .logo img {
     height: 42px;
   }
 
-  /* show brand title in mobile */
   .brand-title {
     font-size: 1rem;
     flex: 1;
     text-align: center;
+    color: white;
   }
 
-  /* show menu icon */
   .menu-icon {
     display: block;
     z-index: 1100;
   }
 
-  /* hide desktop button */
   .desktop-btn {
     display: none;
   }
@@ -307,12 +238,12 @@ body {
     top: 75px;
     left: 0;
     width: 100%;
-    background: white;
+    background: #111;
     flex-direction: column;
     padding: 25px;
     gap: 18px;
     display: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   }
 
   .nav-links.active {
@@ -321,9 +252,9 @@ body {
 
   .nav-links li a {
     font-size: 13px;
+    color: white;
   }
 
-  /* hero content mobile */
   .hero-overlay {
     padding: 20px;
     height: 100vh;
@@ -355,7 +286,15 @@ body {
     width: 100%;
     padding: 12px;
   }
-
 }
 
+/* ================= TABLET & DESKTOP ================= */
+@media (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
 
+  .brand-title {
+    display: none;
+  }
+}
