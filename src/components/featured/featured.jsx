@@ -1,25 +1,11 @@
 import "./featured.css";
-
-// your gallery images
-import img1 from "../../assets/featured/img1.jpg";
-import img2 from "../../assets/featured/img2.jpg";
-import img3 from "../../assets/featured/img3.jpg";
-import img4 from "../../assets/featured/img4.jpg";
-import img5 from "../../assets/featured/img5.jpg";
-import img6 from "../../assets/featured/img6.jpg";
-import img7 from "../../assets/featured/img7.jpg";
-import img8 from "../../assets/featured/img8.jpg";
-
-// your video
-import "./Featured.css";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import weddingVideo from "../../assets/featured/wedding-video.mp4";
 
 export default function Featured() {
   const [galleryImages, setGalleryImages] = useState([]);
-  const [videoSource, setVideoSource] =
-    useState(weddingVideo);
+  const [videoSource, setVideoSource] = useState(weddingVideo);
 
   useEffect(() => {
     fetchFeaturedImages();
@@ -27,14 +13,9 @@ export default function Featured() {
 
   const fetchFeaturedImages = async () => {
     try {
-      const res = await api.get(
-        "/featured/all"
-      );
+      const res = await api.get("/featured/all");
 
-      console.log(
-        "Featured API Response:",
-        res.data
-      );
+      console.log("Featured API Response:", res.data);
 
       const featuredData = res.data;
 
@@ -43,14 +24,12 @@ export default function Featured() {
         return;
       }
 
-      // dynamic video from backend
+      // Dynamic video from backend
       if (
         featuredData.videoUrl &&
         featuredData.videoUrl.trim() !== ""
       ) {
-        setVideoSource(
-          featuredData.videoUrl
-        );
+        setVideoSource(featuredData.videoUrl);
       }
 
       if (
@@ -61,27 +40,12 @@ export default function Featured() {
         return;
       }
 
-      const allImages =
-        featuredData.images.map((img) => {
-          // already full URL
-          if (
-            typeof img === "string" &&
-            img.startsWith("http")
-          ) {
-            return img;
-          }
-
-          // only filename
-          if (typeof img === "string") {
-            return `http://localhost:5000/uploads/${img}`;
-          }
-
-          return null;
-        });
-
-      setGalleryImages(
-        allImages.filter(Boolean)
+      // Cloudinary URLs already full URLs
+      const allImages = featuredData.images.filter(
+        (img) => typeof img === "string"
       );
+
+      setGalleryImages(allImages);
     } catch (error) {
       console.error(
         "Error fetching featured images:",
@@ -125,7 +89,6 @@ export default function Featured() {
       <div className="featuredGrid">
         {galleryImages.length > 0 ? (
           <>
-            {/* First 3 images */}
             {galleryImages
               .slice(0, 3)
               .map((img, index) => (
@@ -136,7 +99,6 @@ export default function Featured() {
                 />
               ))}
 
-            {/* Quote Box */}
             <div className="quote-box">
               MEMORIES
               <br />
@@ -145,7 +107,6 @@ export default function Featured() {
               FOREVER
             </div>
 
-            {/* Remaining images */}
             {galleryImages
               .slice(3)
               .map((img, index) => (
@@ -158,18 +119,14 @@ export default function Featured() {
           </>
         ) : (
           <div className="no-images">
-            <p>
-              No featured images available
-            </p>
+            <p>No featured images available</p>
           </div>
         )}
       </div>
 
       <button
         className="featured-btn"
-        onClick={
-          handleInstagramRedirect
-        }
+        onClick={handleInstagramRedirect}
       >
         View More ↗
       </button>
