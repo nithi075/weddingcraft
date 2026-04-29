@@ -1,6 +1,6 @@
 .portfolio {
   width: 100%;
-  background: white;
+  background: #0f0f0f; /* changed from white */
   padding: 80px 20px;
   overflow: hidden;
 }
@@ -21,6 +21,7 @@
   font-family: "Playfair Display";
   font-size: 42px;
   margin: 15px 0;
+  color: white; /* added */
 }
 
 .accent-line {
@@ -64,16 +65,12 @@
 }
 
 .portfolio-card.left-side {
-  transform: translateX(-55%)
-    scale(0.8)
-    rotateY(20deg);
+  transform: translateX(-55%) scale(0.8) rotateY(20deg);
   opacity: 0.4;
 }
 
 .portfolio-card.right-side {
-  transform: translateX(55%)
-    scale(0.8)
-    rotateY(-20deg);
+  transform: translateX(55%) scale(0.8) rotateY(-20deg);
   opacity: 0.4;
 }
 
@@ -139,12 +136,13 @@
   font-size: 28px;
   margin: 10px 0;
   font-family: "Playfair Display";
-  color : white;
+  color: white;
 }
 
 .card-desc-short {
   font-size: 14px;
   margin-bottom: 20px;
+  color: rgba(255,255,255,0.85);
 }
 
 .view-story-btn {
@@ -152,6 +150,7 @@
   padding: 10px 20px;
   border: 1px solid white;
   font-size: 12px;
+  color: white;
 }
 
 .pagination {
@@ -165,7 +164,7 @@
   width: 8px;
   height: 8px;
   border: none;
-  background: #ddd;
+  background: #444; /* changed from light gray */
   border-radius: 50%;
   cursor: pointer;
 }
@@ -176,32 +175,12 @@
   border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-  .portfolio-card {
-    width: 280px;
-    height: 380px;
-    margin-left: -140px;
-  }
-
-  .portfolio-slider-container {
-    height: 450px;
-  }
-
-  .card-title {
-    font-size: 22px;
-  }
-
-  .card-desc-short {
-    display: none;
-  }
-}
 /* MOBILE */
 @media (max-width: 768px) {
   .portfolio {
     padding: 50px 15px;
   }
 
-  /* heading same like about */
   .portfolio-header h2 {
     font-family: "Cormorant Garamond", serif;
     font-size: 1.8rem;
@@ -237,27 +216,18 @@
       rotateY(-15deg);
   }
 
-  /* card title same luxury font */
   .card-title {
-    font-family:
-      "Cormorant Garamond",
-      serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 1.4rem;
     font-weight: 400;
     letter-spacing: 1px;
   }
 
-  /* description same like about paragraph */
   .card-desc-short {
     font-family: Montserrat;
     font-size: 0.75rem;
     line-height: 1.8;
-    color: rgba(
-      255,
-      255,
-      255,
-      0.85
-    );
+    color: rgba(255,255,255,0.85);
     display: block;
   }
 
