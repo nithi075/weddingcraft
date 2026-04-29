@@ -1,178 +1,91 @@
-.blog{
-
- background:#f4f1ea;
-
- padding:60px 20px;
-
- text-align:center;
-
+.blog {
+  background: #0f0f0f; /* changed from cream */
+  padding: 60px 20px;
+  text-align: center;
 }
 
 /* subtitle */
-.tag{
-
- font-size:.6rem;
-
- letter-spacing:3px;
-
- color:#999;
-
- display:block;
-
- margin-bottom:6px;
-
+.tag {
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: #bdbdbd; /* updated */
+  display: block;
+  margin-bottom: 6px;
 }
 
 /* heading */
-.blog h2{
-
- font-family:"Cormorant Garamond";
-
- font-size:1.7rem;
-
- letter-spacing:2px;
-
- margin-bottom:25px;
-
+.blog h2 {
+  font-family: "Cormorant Garamond";
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  color: white;
 }
 
 /* grid */
-.blogGrid{
-
- display:grid;
-
- grid-template-columns:1fr 1fr 1fr;
-
- gap:10px;
-
- max-width:850px;
-
- margin:auto;
-
-}
-
-/* cards */
-.blog-card{
-
- background:white;
-
- display:flex;
-
- flex-direction:column;
-
- justify-content:center;
-
- align-items:center;
-
- text-align:center;
-
-}
-
-/* images */
-.blog-card img{
-
- width:100%;
-
- height:140px;
-
- object-fit:cover;
-
-}
-
-/* text */
-.blog-card p{
-
- font-size:.65rem;
-
- letter-spacing:1px;
-
- padding:10px;
-
-}
-
-/* center gold card */
-.gold-card{
-
- background:#c5a059;
-
- color:white;
-
- font-family:"Cormorant Garamond";
-
- font-size:.8rem;
-
- letter-spacing:2px;
-
- padding:20px;
-
-}
-
-/* button */
-.blog-btn{
-
- margin-top:25px;
-
- background:#c5a059;
-
- color:white;
-
- border:none;
-
- padding:10px 22px;
-
- font-size:.6rem;
-
- letter-spacing:2px;
-
-}
-
-/* tablet */
-@media(min-width:768px){
-
- .blog-card img{
-
-  height:180px;
-
- }
-
-}
-
-/* desktop */
-@media(min-width:1024px){
-
- .blog{
-
-  padding:90px 20px;
-
- }
-
- .blog h2{
-
-  font-size:2.1rem;
-
- }
-
-
-}
-/* Keep your existing .blog, .tag, and .blogGrid styles */
-
 .blogGrid {
   display: grid;
-  grid-template-columns: 1fr; /* Mobile first */
+  grid-template-columns: 1fr;
   gap: 20px;
   max-width: 1000px;
   margin: auto;
 }
 
+/* cards */
+.blog-card {
+  background: #1a1a1a; /* changed from white */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* images */
+.blog-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* text */
+.blog-card p {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 10px;
+  color: #d1d1d1;
+}
+
+/* center gold card */
+.gold-card {
+  background: #c5a059;
+  color: white;
+  font-family: "Cormorant Garamond";
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  padding: 20px;
+}
+
+/* button */
+.blog-btn {
+  margin-top: 25px;
+  background: #c5a059;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+}
+
 /* Specific styling for the Story Card */
 .story-card {
-  background: #c5a059 !important; /* Premium Gold */
+  background: #c5a059 !important;
   color: white;
   padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  order: -1; /* Story comes first on mobile */
+  order: -1;
 }
 
 .story-inner .est {
@@ -204,14 +117,29 @@
   padding-top: 10px;
 }
 
-/* Desktop Layout */
+/* tablet */
 @media (min-width: 768px) {
+  .blog-card img {
+    height: 180px;
+  }
+
   .blogGrid {
-    grid-template-columns: 1fr 1.2fr 1fr; /* Story card is slightly wider */
+    grid-template-columns: 1fr 1.2fr 1fr;
     align-items: stretch;
   }
-  
+
   .story-card {
-    order: 0; /* Back to center on desktop */
+    order: 0;
+  }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .blog {
+    padding: 90px 20px;
+  }
+
+  .blog h2 {
+    font-size: 2.1rem;
   }
 }
