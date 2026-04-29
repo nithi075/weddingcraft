@@ -1,100 +1,110 @@
+/* Container */
 .floating-container {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.floating-chat-glass {
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.7); /* Translucent White */
-  backdrop-filter: blur(12px); /* Glass Blur */
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(179, 148, 90, 0.3); /* Soft Gold Border */
-  padding: 12px;
-  border-radius: 60px;
-  text-decoration: none;
-  color: #1a1a1a;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  max-width: 55px; /* Initial Width (Only showing icon) */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-}
-
-/* On Hover: Expand the Button */
-.floating-chat-glass:hover {
-  max-width: 220px; /* Expand to show text */
-  padding: 12px 25px;
-  background: #fff;
-  border-color: #b3945a;
-  box-shadow: 0 20px 40px rgba(179, 148, 90, 0.15);
-}
-
-.icon-wrapper {
-  min-width: 30px;
-  height: 30px;
+  bottom: 35px;
+  right: 35px;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #b3945a; /* Gold Icon */
-  transition: transform 0.5s ease;
 }
 
-.whatsapp-svg {
-  width: 24px;
-  height: 24px;
+/* Glassmorphism Button */
+.floating-chat-glass {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.85); /* Premium White Glass */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(197, 160, 89, 0.4); /* Subtle Gold Border */
+  border-radius: 100px;
+  text-decoration: none;
+  z-index: 2;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Icon Styling - Using Button's Gold Color */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c5a059; /* Your Brand Gold */
+  filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3));
+}
+
+/* Label Styling */
 .chat-label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 2px;
-  margin-left: 15px;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateX(10px);
-  transition: all 0.4s ease;
+  text-transform: uppercase;
+  color: #1a1a1a;
 }
 
-/* Hover States for Internal Elements */
+/* Hover Effect */
+.floating-chat-glass:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: #c5a059; /* Switches to Gold on Hover */
+  border-color: #c5a059;
+}
+
+.floating-chat-glass:hover .icon-wrapper,
 .floating-chat-glass:hover .chat-label {
-  opacity: 1;
-  transform: translateX(0);
+  color: #ffffff; /* Turns white for contrast */
 }
 
-.floating-chat-glass:hover .icon-wrapper {
-  transform: rotate(360deg); /* Subtle spin on hover */
-}
-
-/* Ambient Glow behind the button */
+/* CONSTANT GLOW EFFECT */
 .floating-glow {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: #b3945a;
-  filter: blur(40px);
-  opacity: 0.15;
-  z-index: -1;
-  border-radius: 50%;
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.6) 0%, transparent 70%);
+  border-radius: 100px;
+  z-index: 1;
+  animation: constant-glow 2.5s infinite alternate ease-in-out;
 }
 
-/* Mobile: Stay slightly smaller but accessible */
+@keyframes constant-glow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.4;
+    filter: blur(15px);
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.8;
+    filter: blur(25px);
+  }
+}
+
+/* Floating Animation for the whole button */
+.floating-container {
+  animation: float-box 4s infinite ease-in-out;
+}
+
+@keyframes float-box {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Mobile: Circle Only */
 @media (max-width: 768px) {
+  .chat-label {
+    display: none;
+  }
+  
+  .floating-chat-glass {
+    padding: 18px;
+    border-radius: 50%;
+  }
+
   .floating-container {
     bottom: 25px;
     right: 25px;
-  }
-  
-  /* On mobile, maybe keep it expanded or just an icon */
-  .floating-chat-glass {
-    max-width: 55px;
-  }
-  .floating-chat-glass:active {
-    max-width: 180px;
   }
 }

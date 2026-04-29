@@ -156,6 +156,7 @@ body {
   font-family: var(--font-heading);
   font-size: 4rem;
   margin-top: 10px;
+  color: white;
 }
 
 .hero-overlay p {
@@ -354,4 +355,7 @@ body {
     width: 100%;
     padding: 12px;
   }
+
 }
+
+

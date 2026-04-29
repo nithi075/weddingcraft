@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --gold: #c5a059;
+    --dark: #121212;
+    --white: #ffffff;
+    --bg-soft: #faf9f6;
+    --text-gray: #666666;
+}
+
+/* =========================
+   BASE STYLES
+========================= */
+.gallery-page-container {
+    background-color: var(--bg-soft);
+    min-height: 100vh;
+}
+
+.gallery-main-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 90px 10px 60px; /* Mobile first spacing */
+}
+
+/* =========================
+   TABS (MOBILE SCROLL)
+========================= */
+.text-tabs-wrapper {
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    background: var(--bg-soft);
+    z-index: 100;
+    padding: 15px 0;
+}
+
+.text-tabs-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 5px;
+}
+
+.text-tabs-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-text-item {
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-gray);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+}
+
+.nav-text-item.active {
+    color: var(--dark);
+    border-bottom: 2px solid var(--gold);
+}
+
+/* =========================
+   HEADER SECTION
+========================= */
+.category-info {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.premium-label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.category-info h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.accent-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 15px auto;
+}
+
+.category-desc {
+    max-width: 500px;
+    margin: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-gray);
+}
+
+/* =========================
+   LUXURY GRID (MOBILE: 2 IN A ROW)
+========================= */
+.luxury-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* FORCED 2 PER ROW ON MOBILE */
+    gap: 8px; /* Tight luxury gap */
+}
+
+.collection-card, .grid-item-detail {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    aspect-ratio: 3/4; /* Maintains uniform look */
+}
+
+.img-box, .img-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.img-box img, .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Card Overlays */
+.card-content-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+    color: white;
+}
+
+.card-content-overlay h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.explore-btn {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+}
+
+/* =========================
+   TABLET & DESKTOP (RESPONSIVE)
+========================= */
+@media (min-width: 768px) {
+    .gallery-main-wrapper {
+        padding: 120px 40px 80px;
+    }
+
+    .luxury-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 in a row on tablets */
+        gap: 25px;
+    }
+
+    .category-info h2 {
+        font-size: 55px;
+    }
+
+    .nav-text-item {
+        font-size: 12px;
+    }
+
+    .collection-card:hover img, .grid-item-detail:hover img {
+        transform: scale(1.08);
+    }
+}
+
+@media (min-width: 1024px) {
+    .luxury-grid {
+        grid-template-columns: repeat(3, 1fr); /* Can change to 4 if needed */
+    }
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+.fade-up {
+    animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.loader-container {
+    text-align: center;
+    padding: 100px 0;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: var(--gold);
+}
+
+.no-images-fallback {
+    grid-column: span 2;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.back-home-btn {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin-top: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.gallery-package-cta {
+  text-align: center;
+  padding: 80px 20px;
+  background: #faf8f3;
+  margin-top: 60px;
+  border-top: 1px solid rgba(197, 160, 89, 0.15);
+}
+
+.gallery-package-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-family: "Cormorant Garamond", serif;
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.gallery-package-cta p {
+  color: var(--text-gray);
+  margin-bottom: 30px;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Premium Package Button */
+.view-package-btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+  padding: 14px 34px;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Gold fill animation */
+.view-package-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  transition: 0.4s ease;
+  z-index: -1;
+}
+
+.view-package-btn:hover::before {
+  left: 0;
+}
+
+.view-package-btn:hover {
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0px 10px 25px rgba(197, 160, 89, 0.25);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gallery-package-cta {
+    padding: 60px 20px;
+  }
+
+  .gallery-package-cta h2 {
+    font-size: 2rem;
+  }
+
+  .gallery-package-cta p {
+    font-size: 0.95rem;
+  }
+
+  .view-package-btn {
+    padding: 12px 26px;
+    font-size: 11px;
+  }
+}

@@ -152,4 +152,66 @@
 
  }
 
+
+}
+/* Keep your existing .blog, .tag, and .blogGrid styles */
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first */
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Specific styling for the Story Card */
+.story-card {
+  background: #c5a059 !important; /* Premium Gold */
+  color: white;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: -1; /* Story comes first on mobile */
+}
+
+.story-inner .est {
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  opacity: 0.8;
+}
+
+.story-inner h3 {
+  font-family: "Cormorant Garamond";
+  font-size: 1.5rem;
+  margin: 10px 0;
+  letter-spacing: 2px;
+}
+
+.story-inner p {
+  font-size: 0.75rem !important;
+  line-height: 1.6;
+  color: #fff !important;
+  padding: 0 !important;
+}
+
+.founder-sign {
+  margin-top: 15px;
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+  .blogGrid {
+    grid-template-columns: 1fr 1.2fr 1fr; /* Story card is slightly wider */
+    align-items: stretch;
+  }
+  
+  .story-card {
+    order: 0; /* Back to center on desktop */
+  }
 }

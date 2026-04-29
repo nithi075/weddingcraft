@@ -11,20 +11,84 @@ import img7 from "../../assets/featured/img7.jpg";
 import img8 from "../../assets/featured/img8.jpg";
 
 // your video
+import "./Featured.css";
+import { useEffect, useState } from "react";
+import api from "../../services/api";
 import weddingVideo from "../../assets/featured/wedding-video.mp4";
 
 export default function Featured() {
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [videoSource, setVideoSource] =
+    useState(weddingVideo);
 
-  const galleryImages = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8
-  ];
+  useEffect(() => {
+    fetchFeaturedImages();
+  }, []);
+
+  const fetchFeaturedImages = async () => {
+    try {
+      const res = await api.get(
+        "/featured/all"
+      );
+
+      console.log(
+        "Featured API Response:",
+        res.data
+      );
+
+      const featuredData = res.data;
+
+      if (!featuredData) {
+        setGalleryImages([]);
+        return;
+      }
+
+      // dynamic video from backend
+      if (
+        featuredData.videoUrl &&
+        featuredData.videoUrl.trim() !== ""
+      ) {
+        setVideoSource(
+          featuredData.videoUrl
+        );
+      }
+
+      if (
+        !featuredData.images ||
+        featuredData.images.length === 0
+      ) {
+        setGalleryImages([]);
+        return;
+      }
+
+      const allImages =
+        featuredData.images.map((img) => {
+          // already full URL
+          if (
+            typeof img === "string" &&
+            img.startsWith("http")
+          ) {
+            return img;
+          }
+
+          // only filename
+          if (typeof img === "string") {
+            return `http://localhost:5000/uploads/${img}`;
+          }
+
+          return null;
+        });
+
+      setGalleryImages(
+        allImages.filter(Boolean)
+      );
+    } catch (error) {
+      console.error(
+        "Error fetching featured images:",
+        error
+      );
+    }
+  };
 
   const handleInstagramRedirect = () => {
     window.open(
@@ -35,16 +99,13 @@ export default function Featured() {
 
   return (
     <section className="featured">
-
       <span className="tag">
         OUR FAVORITE MOMENTS
       </span>
 
-      <h2>
-        FEATURED WEDDING
-      </h2>
+      <h2>FEATURED WEDDING</h2>
 
-      {/* video section */}
+      {/* Video */}
       <div className="featured-video-container">
         <video
           autoPlay
@@ -53,38 +114,65 @@ export default function Featured() {
           playsInline
           className="featured-video"
         >
-          <source src={weddingVideo} type="video/mp4" />
+          <source
+            src={videoSource}
+            type="video/mp4"
+          />
         </video>
       </div>
 
-      {/* collage */}
+      {/* Gallery */}
       <div className="featuredGrid">
+        {galleryImages.length > 0 ? (
+          <>
+            {/* First 3 images */}
+            {galleryImages
+              .slice(0, 3)
+              .map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`featured-${index}`}
+                />
+              ))}
 
-        {galleryImages.slice(0,3).map((img,index)=>(
-          <img key={index} src={img} alt="" />
-        ))}
+            {/* Quote Box */}
+            <div className="quote-box">
+              MEMORIES
+              <br />
+              THAT LAST
+              <br />
+              FOREVER
+            </div>
 
-        <div className="quote-box">
-          MEMORIES
-          <br/>
-          THAT LAST
-          <br/>
-          FOREVER
-        </div>
-
-        {galleryImages.slice(3).map((img,index)=>(
-          <img key={index} src={img} alt="" />
-        ))}
-
+            {/* Remaining images */}
+            {galleryImages
+              .slice(3)
+              .map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`featured-${index + 3}`}
+                />
+              ))}
+          </>
+        ) : (
+          <div className="no-images">
+            <p>
+              No featured images available
+            </p>
+          </div>
+        )}
       </div>
 
-      <button 
+      <button
         className="featured-btn"
-        onClick={handleInstagramRedirect}
+        onClick={
+          handleInstagramRedirect
+        }
       >
         View More ↗
       </button>
-
     </section>
   );
 }

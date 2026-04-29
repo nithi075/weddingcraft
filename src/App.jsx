@@ -1,4 +1,7 @@
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
+
 
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
@@ -12,67 +15,124 @@ import Instagram from "./components/instagram/Instagram";
 import Blog from "./components/blog/blog";
 import Footer from "./components/footer/footer";
 import Gallery from "./pages/Gallery";
+
+// Home page components
+import Portfolio from "./components/portfolio/Portfolio";
+import Packages from "./components/packages/Packages";
+import Video from "./components/video/Video";
+import Testimonials from "./components/testimonials/Testimonials";
+import Instagram from "./components/instagram/Instagram";
+import Blog from "./components/blog/Blog";
+import Footer from "./components/footer/Footer";
+
 import Location from "./components/location/Location";
-import Featured from "./components/featured/featured";
-import Services from "./components/Services/Services"
+import Featured from "./components/featured/Featured";
+import Services from "./components/Services/Services";
 import About from "./components/About/About";
 import Hero from "./components/Hero/Hero";
+import Navbar from "./components/Navbar/Navbar";
 
-function App() {
+// Pages
+import Gallery from "./pages/Gallery";
+import GalleryDetails from "./pages/gallerypage/gallerypage";
+import GalleryUpload from "./pages/Admin/GalleryUpload";
+import FeaturedUpload from "./pages/Admin/FeaturedUpload";
+import TestimonialUpload from "./pages/Admin/TestimonialUpload";
+import InstagramUpload from "./pages/Admin/InstagramUpload";
+import Dashboard from "./pages/Admin/Dashboard";
+import FloatingChat from "./components/floating/floating";
+
+function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
-      {/* Home Section */}
       <section id="home">
-        <Hero/>
+        <Navbar
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
+        <Hero />
       </section>
 
-      {/* Services Section */}
+      {/* <section id="portfolio">
+        <Portfolio />
+      </section> */}
+
       <section id="services">
-         <Services/>
+        <Services />
       </section>
 
-       <section id="gallery">
-        <Gallery/>
-        </section>
-     
-
-      {/* Gallery Section */}
       <section id="gallery">
-        <Featured/>
+        <Gallery />
       </section>
 
-      {/* About Section */}
+      <section id="featured">
+        <Featured />
+      </section>
+
       <section id="about">
-        <About/>
+        <About />
       </section>
 
-      {/* Video Section */}
       <section id="packages">
         <Packages />
       </section>
-    
 
-      {/* Testimonials Section */}
+      {/* <section id="video">
+        <Video />
+      </section> */}
+
       <section id="testimonials">
         <Testimonials />
       </section>
 
-      {/* Instagram Section */}
       <section id="instagram">
         <Instagram />
       </section>
-      <section id="location">
-        <Location/>
-      </section>
-   
 
-      {/* Contact Section */}
+      <section id="blog">
+        <Blog />
+      </section>
+
+      <section id="location">
+        <Location />
+      </section>
+
       <section id="contact">
         <Footer />
       </section>
-   
+       <FloatingChat/>
     </>
   );
 }
 
+<<<<<<< HEAD
 export default App;
+=======
+function App() {
+  return (
+    <Routes>
+      {/* Home */}
+      <Route path="/" element={<HomePage />} />
+
+      {/* Gallery main page */}
+      <Route path="/gallery" element={<Gallery />} />
+
+      {/* Dynamic gallery page */}
+      <Route
+        path="/galleryDetails/:category"
+        element={<GalleryDetails />}
+      />
+      <Route path="/admin" element={<Dashboard/>} />
+      <Route path="/gallery-upload" element={<GalleryUpload />  } />
+      <Route path="/featured-upload" element={<FeaturedUpload />} />
+      <Route path="/instagram-upload" element={<InstagramUpload />} />
+      <Route path="/testimonial-upload" element={<TestimonialUpload    />} />
+    </Routes>
+  
+  );
+}
+
+export default App;
+>>>>>>> f392c94 (init)

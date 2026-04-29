@@ -1,184 +1,159 @@
-.testimonials{
-
- padding:60px 20px;
-
- text-align:center;
-
- background:white;
-
+.testimonials {
+  padding: 60px 20px;
+  text-align: center;
+  background: white;
 }
 
 /* small subtitle */
-.tag{
-
- font-size:.6rem;
-
- letter-spacing:3px;
-
- color:#999;
-
- display:block;
-
- margin-bottom:6px;
-
+.tag {
+  font-size: .6rem;
+  letter-spacing: 3px;
+  color: #999;
+  display: block;
+  margin-bottom: 6px;
 }
 
 /* heading */
-.testimonials h2{
-
- font-family:"Cormorant Garamond";
-
- font-size:1.8rem;
-
- letter-spacing:2px;
-
- margin-bottom:25px;
-
+.testimonials h2 {
+  font-family: "Cormorant Garamond";
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
 }
 
 /* banner */
-.testimonial-banner{
+.testimonial-banner {
+  position: relative;
+  max-width: 950px;
+  margin: auto;
+  overflow: hidden;
 
- position:relative;
-
- max-width:950px;
-
- margin:auto;
-
- overflow:hidden;
-
+  /* smooth transition */
+  animation: testimonialFade 0.8s ease-in-out;
 }
 
 /* image */
-.testimonial-banner img{
+.testimonial-banner img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
 
- width:100%;
-
- height:260px;
-
- object-fit:cover;
-
+/* optional hover zoom */
+.testimonial-banner:hover img {
+  transform: scale(1.03);
 }
 
 /* gold overlay */
-.testimonial-overlay{
+.testimonial-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 70%;
+  background: linear-gradient(
+    to right,
+    rgba(197,160,89,.95),
+    rgba(197,160,89,.7),
+    rgba(197,160,89,0)
+  );
 
- position:absolute;
-
- left:0;
-
- top:0;
-
- height:100%;
-
- width:70%;
-
- background:linear-gradient(
-  to right,
-  rgba(197,160,89,.95),
-  rgba(197,160,89,.7),
-  rgba(197,160,89,0)
- );
-
- color:white;
-
- display:flex;
-
- flex-direction:column;
-
- justify-content:center;
-
- align-items:flex-start;
-
- padding:25px;
-
- text-align:left;
-
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 25px;
+  text-align: left;
 }
 
 /* name */
-.testimonial-overlay h3{
-
- font-family:"Cormorant Garamond";
-
- font-size:1.3rem;
-
- margin-bottom:10px;
-
+.testimonial-overlay h3 {
+  font-family: "Cormorant Garamond";
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 /* text */
-.testimonial-overlay p{
-
- font-size:.75rem;
-
- line-height:1.6;
-
- max-width:260px;
-
- margin-bottom:15px;
-
+.testimonial-overlay p {
+  font-size: .75rem;
+  line-height: 1.6;
+  max-width: 260px;
+  margin-bottom: 15px;
 }
 
 /* button */
-.testimonial-overlay button{
+.testimonial-overlay button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  font-size: .6rem;
+  letter-spacing: 2px;
+}
 
- background:transparent;
+/* dots */
+.testimonial-dots {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
- border:1px solid white;
+.testimonial-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #d8c5a2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
- color:white;
+.testimonial-dots .dot.active {
+  background: #c5a059;
+  transform: scale(1.3);
+}
 
- padding:8px 16px;
-
- font-size:.6rem;
-
- letter-spacing:2px;
-
+/* smooth fade animation */
+@keyframes testimonialFade {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
 
 /* tablet */
-@media(min-width:768px){
+@media (min-width: 768px) {
+  .testimonial-banner img {
+    height: 320px;
+  }
 
- .testimonial-banner img{
-
-  height:320px;
-
- }
-
- .testimonial-overlay{
-
-  padding:40px;
-
- }
-
+  .testimonial-overlay {
+    padding: 40px;
+  }
 }
 
 /* desktop */
-@media(min-width:1024px){
+@media (min-width: 1024px) {
+  .testimonials {
+    padding: 90px 20px;
+  }
 
- .testimonials{
+  .testimonial-banner img {
+    height: 360px;
+  }
 
-  padding:90px 20px;
+  .testimonial-overlay h3 {
+    font-size: 1.6rem;
+  }
 
- }
-
- .testimonial-banner img{
-
-  height:360px;
-
- }
-
- .testimonial-overlay h3{
-
-  font-size:1.6rem;
-
- }
-
- .testimonial-overlay p{
-
-  font-size:.9rem;
-
- }
-
+  .testimonial-overlay p {
+    font-size: .9rem;
+  }
 }

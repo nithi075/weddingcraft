@@ -166,3 +166,25 @@
     bottom: 60px;
   }
 }
+/* Update the paragraph style to handle multiple blocks */
+.about-text p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem; /* Slightly larger for better readability */
+  color: #666;
+  max-width: 450px; /* Increased width for longer text */
+  margin-bottom: 15px; /* Space between paragraphs */
+  line-height: 1.8;
+}
+
+/* Ensure the text container aligns well on desktop */
+@media (min-width: 768px) {
+  .about-content {
+    text-align: left;
+    max-width: 500px;
+  }
+  
+  .about-text p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

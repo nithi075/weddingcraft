@@ -45,6 +45,10 @@
   transition: 0.4s ease;
   position: relative;
   min-height: 550px;
+
+  /* for button bottom alignment */
+  display: flex;
+  flex-direction: column;
 }
 
 .package-card:hover {
@@ -117,6 +121,9 @@
   border-top: 1px solid #eee;
   padding-top: 20px;
   margin-top: 20px;
+
+  /* takes remaining space */
+  flex-grow: 1;
 }
 
 .features p {
@@ -133,17 +140,18 @@
 
 /* ================= BUTTON ================= */
 .package-btn {
-  margin-top: 25px;
+  margin-top: auto; /* pushes button to bottom */
   background: #c5a059;
   color: white;
   border: none;
-  padding: 10px 22px;
+  padding: 12px 22px;
   font-size: 0.6rem;
   letter-spacing: 2px;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   transition: 0.3s ease;
+  width: 100%;
 }
 
 .package-btn:hover {
@@ -172,6 +180,7 @@
     overflow-x: auto;
     gap: 20px;
     scrollbar-width: none;
+    padding-bottom: 10px;
   }
 
   .packages-container::-webkit-scrollbar {
@@ -193,7 +202,7 @@
   }
 }
 
-/* small mobile */
+/* ================= SMALL MOBILE ================= */
 @media (max-width: 480px) {
   .packages-header h2 {
     font-size: 1.7rem;

@@ -1,86 +1,301 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown, Phone, Calendar } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
+import logoimg from "../../assets/logo.png";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState(null);
   const [scrolled, setScrolled] = useState(false);
 
-  // 1. Scroll detection for glass effect
+  const location = useLocation();
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  // 2. Prevent body scroll when menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "unset";
-  }, [menuOpen]);
+    setMenuOpen(false);
+    setMobileExpanded(null);
+  }, [location]);
 
-  // 3. Close menu handler
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  /* Updated Navigation Items */
+  const navItems = [
+    { title: "Home", link: "/" },
 
-  const navLinks = [
-    { id: "01", name: "Home", href: "#hero" },
-    { id: "02", name: "About", href: "#about" },
-    { id: "03", name: "Portfolio", href: "#work" },
+    {
+      title: "Weddings",
+      link: "/gallery",
+      submenu: [
+        {
+          title: "Traditional Wedding",
+          link: "/galleryDetails/traditional-wedding",
+        },
+        {
+          title: "Destination Wedding",
+          link: "/galleryDetails/destination-wedding",
+        },
+        {
+          title: "Reception",
+          link: "/galleryDetails/reception",
+        },
+        {
+          title: "Sangeet & Haldi",
+          link: "/galleryDetails/sangeet-haldi",
+        },
+      ],
+    },
+
+    {
+      title: "Pre Wedding",
+      link: "/gallery",
+      submenu: [
+        {
+          title: "Pre Wedding",
+          link: "/galleryDetails/pre-wedding",
+        },
+      ],
+    },
+
+    {
+      title: "Maternity & Baby",
+      link: "/gallery",
+      submenu: [
+        {
+          title: "Maternity Photography",
+          link: "/galleryDetails/maternity",
+        },
+        {
+          title: "Baby Photography",
+          link: "/galleryDetails/baby-shoots",
+        },
+      ],
+    },
+
+    {
+      title: "Portraits",
+      link: "/gallery",
+      submenu: [
+        {
+          title: "Portrait Photography",
+          link: "/galleryDetails/bridal",
+        },
+      ],
+    },
+
+    {
+      title: "Events",
+      link: "/gallery",
+      submenu: [
+        {
+          title: "Event Photography",
+          link: "/galleryDetails/birthday",
+        },
+      ],
+    },
+
+    { title: "Packages", link: "/#packages" },
+    { title: "Contact", link: "/#contact" },
   ];
 
   return (
-    <nav className={`nav ${scrolled ? "nav-scroll" : ""} ${menuOpen ? "nav-active" : ""}`}>
-      <div className="nav-container">
-        <div className="logo-wrapper">
-          <h2 className="logo">
-           Mihtuna<span>Photography</span>
-          </h2>
-        </div>
+    <nav className={`navbar-wrapper ${scrolled ? "scrolled" : ""}`}>
+      <div className="navbar-container">
+        
+        {/* Logo */}
+        <Link to="/" className="logo">
+          <img src={logoimg} alt="Studio Logo" />
+        </Link>
 
-        {/* Desktop Links */}
-        <div className="nav-links">
-          {navLinks.map((link) => (
-            <a key={link.id} href={link.href} className="link-item">
-              {link.name}
-            </a>
+        {/* Desktop Navigation */}
+        <ul className="desktop-nav">
+          {navItems.map((item, index) => (
+            <li
+              key={index}
+              className={item.submenu ? "has-submenu" : ""}
+            >
+              {item.link.includes("#") ? (
+                <NavHashLink smooth to={item.link}>
+                  {item.title}
+                  {item.submenu && (
+                    <ChevronDown size={14} className="chevron" />
+                  )}
+                </NavHashLink>
+              ) : (
+                <Link
+                  to={item.link}
+                  className={
+                    location.pathname.includes(item.link)
+                      ? "active"
+                      : ""
+                  }
+                >
+                  {item.title}
+                  {item.submenu && (
+                    <ChevronDown size={14} className="chevron" />
+                  )}
+                </Link>
+              )}
+
+              {/* Desktop Dropdown */}
+              {item.submenu && (
+                <div className="mega-dropdown">
+                  <ul className="dropdown-content">
+                    {item.submenu.map((sub, i) => (
+                      <li key={i}>
+                        <Link to={sub.link}>
+                          {sub.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
           ))}
-          <a href="#gallery" className="nav-btn-premium">View Gallery</a>
-        </div>
+        </ul>
 
-        {/* Hamburger to X Toggle Button */}
-        <button 
-          className={`menu-toggle ${menuOpen ? "is-active" : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle Menu"
-          aria-expanded={menuOpen}
-        >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-        </button>
+        {/* Right Side Actions */}
+        <div className="nav-actions">
+          <a
+            href="tel:9840767566"
+            className="action-btn call-btn"
+          >
+            <Phone size={16} />
+            <span>9840767566</span>
+          </a>
+
+          <NavHashLink
+            smooth
+            to="/#contact"
+            className="action-btn book-btn"
+          >
+            <Calendar size={16} />
+            <span>BOOK NOW</span>
+          </NavHashLink>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? (
+              <X size={28} />
+            ) : (
+              <Menu size={28} />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Full Screen Mobile Overlay */}
-      <div className={`mobile-overlay ${menuOpen ? "open" : ""}`}>
-        <div className="overlay-inner">
-          <nav className="mobile-links">
-            {navLinks.map((link) => (
-              <a key={link.id} href={link.href} onClick={closeMenu}>
-                <small>{link.id}</small> {link.name}
-              </a>
-            ))}
-            <a href="#gallery" onClick={closeMenu}>
-              <small>04</small> Gallery
-            </a>
-          </nav>
-          
-          <div className="menu-footer">
-            <p>Based in Tamil Nadu</p>
-            <div className="social-mini">
-              <a href="#instagram">Instagram</a>
-              <a href="#behance">Behance</a>
-              <a href="#mail">Contact</a>
+      {/* Mobile Overlay */}
+      <div
+        className={`mobile-sidebar-overlay ${
+          menuOpen ? "show" : ""
+        }`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`mobile-sidebar ${
+          menuOpen ? "open" : ""
+        }`}
+      >
+        <div className="mobile-header">
+          <img
+            src={logoimg}
+            alt="Logo"
+            className="mobile-logo"
+          />
+
+          <X
+            size={28}
+            onClick={() => setMenuOpen(false)}
+          />
+        </div>
+
+        <div className="mobile-nav-content">
+          {navItems.map((item, index) => (
+            <div
+              key={index}
+              className="mobile-item-group"
+            >
+              <div className="mobile-link-row">
+                {item.link.includes("#") ? (
+                  <NavHashLink
+                    smooth
+                    to={item.link}
+                    onClick={() =>
+                      !item.submenu &&
+                      setMenuOpen(false)
+                    }
+                  >
+                    {item.title}
+                  </NavHashLink>
+                ) : (
+                  <Link
+                    to={item.link}
+                    onClick={() =>
+                      !item.submenu &&
+                      setMenuOpen(false)
+                    }
+                  >
+                    {item.title}
+                  </Link>
+                )}
+
+                {item.submenu && (
+                  <button
+                    className="expand-btn"
+                    onClick={() =>
+                      setMobileExpanded(
+                        mobileExpanded === index
+                          ? null
+                          : index
+                      )
+                    }
+                  >
+                    <ChevronDown
+                      size={20}
+                      className={
+                        mobileExpanded === index
+                          ? "rotate"
+                          : ""
+                      }
+                    />
+                  </button>
+                )}
+              </div>
+
+              {item.submenu &&
+                mobileExpanded === index && (
+                  <div className="mobile-sub-list">
+                    {item.submenu.map((sub, i) => (
+                      <Link
+                        key={i}
+                        to={sub.link}
+                        onClick={() =>
+                          setMenuOpen(false)
+                        }
+                      >
+                        {sub.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </nav>

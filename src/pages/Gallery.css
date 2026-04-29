@@ -1,209 +1,280 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400&display=swap');
-
-/* ================= SECTION ================= */
 .portfolio {
+  width: 100%;
+  background: white;
   padding: 80px 20px;
-  background: #fcfaf7;
-  text-align: center;
   overflow: hidden;
 }
 
-/* small tag */
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 .p-tag {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 3px;
-  color: #b08d57;
+  color: #d4a373;
+  font-size: 13px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  margin-bottom: 15px;
-  display: block;
 }
 
-/* heading */
-.portfolio h2 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 3rem;
-  font-weight: 400;
-  margin-bottom: 60px;
-  letter-spacing: 2px;
-  color: #111;
+.portfolio-header h2 {
+  font-family: "Playfair Display";
+  font-size: 42px;
+  margin: 15px 0;
 }
 
-/* ================= SLIDER ================= */
-.portfolio-slider {
-  position: relative;
+.accent-line {
+  width: 50px;
+  height: 1px;
+  background: #d4a373;
+  margin: auto;
+}
+
+.portfolio-slider-container {
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 550px;
+  perspective: 1800px;
 }
 
-/* cards */
+.portfolio-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+}
+
 .portfolio-card {
   position: absolute;
-  width: 320px;
-  height: 460px;
+  width: 380px;
+  height: 520px;
+  left: 50%;
+  margin-left: -190px;
+  border-radius: 8px;
+  overflow: hidden;
   cursor: pointer;
-  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-  filter: grayscale(20%);
-  opacity: 0.6;
+  transition: all 0.8s ease;
 }
 
 .portfolio-card.active {
+  z-index: 10;
+  transform: scale(1);
   opacity: 1;
-  filter: grayscale(0);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-/* image */
-.portfolio-card img {
+.portfolio-card.left-side {
+  transform: translateX(-55%)
+    scale(0.8)
+    rotateY(20deg);
+  opacity: 0.4;
+}
+
+.portfolio-card.right-side {
+  transform: translateX(55%)
+    scale(0.8)
+    rotateY(-20deg);
+  opacity: 0.4;
+}
+
+.portfolio-card.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* ================= OVERLAY ================= */
-.overlay {
+.glass-shine {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 35px 25px;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
   background: linear-gradient(
+    to right,
     transparent,
-    rgba(0,0,0,0.75)
+    rgba(255,255,255,0.3),
+    transparent
   );
+  transform: skewX(-25deg);
+  transition: 0.8s;
+}
+
+.portfolio-card.active:hover .glass-shine {
+  left: 150%;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.8),
+    transparent
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
   color: white;
-  text-align: left;
-  opacity: 0;
-  transition: 0.5s ease;
 }
 
-.portfolio-card.active .overlay {
-  opacity: 1;
-}
-
-.overlay p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
+.cat-label {
+  color: #d4a373;
+  font-size: 12px;
   letter-spacing: 2px;
-  margin-bottom: 8px;
-  color: #d8c7a3;
 }
 
-.overlay h3 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  margin-bottom: 12px;
+.card-title {
+  font-size: 28px;
+  margin: 10px 0;
+  font-family: "Playfair Display";
+  color : white;
 }
 
-.view-link {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 2px;
-  border-bottom: 1px solid rgba(255,255,255,0.4);
-  padding-bottom: 4px;
+.card-desc-short {
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
-/* ================= PAGINATION ================= */
+.view-story-btn {
+  width: fit-content;
+  padding: 10px 20px;
+  border: 1px solid white;
+  font-size: 12px;
+}
+
 .pagination {
-  margin-top: 50px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
+  margin-top: 30px;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
+  border: none;
+  background: #ddd;
   border-radius: 50%;
-  background: #d1d1d1;
   cursor: pointer;
-  transition: 0.4s;
 }
 
 .dot.active {
-  background: #b08d57;
-  transform: scale(1.5);
+  background: #d4a373;
+  width: 30px;
+  border-radius: 10px;
 }
 
-/* ================= TABLET ================= */
 @media (max-width: 768px) {
-  .portfolio {
-    padding: 50px 12px;
+  .portfolio-card {
+    width: 280px;
+    height: 380px;
+    margin-left: -140px;
   }
 
-  .p-tag {
-    font-size: 0.55rem;
+  .portfolio-slider-container {
+    height: 450px;
+  }
+
+  .card-title {
+    font-size: 22px;
+  }
+
+  .card-desc-short {
+    display: none;
+  }
+}
+/* MOBILE */
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 50px 15px;
+  }
+
+  /* heading same like about */
+  .portfolio-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.8rem;
+    font-weight: 400;
     letter-spacing: 2px;
   }
 
-  .portfolio h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
+  .p-tag {
+    font-family: Montserrat;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
   }
 
-  .portfolio-slider {
+  .portfolio-slider-container {
+    height: 450px;
+  }
+
+  .portfolio-card {
+    width: 280px;
     height: 380px;
-    overflow: hidden;
+    margin-left: -140px;
   }
 
-  .portfolio-card {
-    width: 220px;
-    height: 300px;
-    transition: all 0.6s ease;
+  .portfolio-card.left-side {
+    transform: translateX(-40%)
+      scale(0.75)
+      rotateY(15deg);
   }
 
-  .portfolio-card.active {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  .portfolio-card.right-side {
+    transform: translateX(40%)
+      scale(0.75)
+      rotateY(-15deg);
   }
 
-  /* overlay always visible on mobile */
-  .overlay {
-    opacity: 1;
-    padding: 18px 15px;
-    background: linear-gradient(
-      transparent,
-      rgba(0,0,0,0.75)
+  /* card title same luxury font */
+  .card-title {
+    font-family:
+      "Cormorant Garamond",
+      serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  /* description same like about paragraph */
+  .card-desc-short {
+    font-family: Montserrat;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: rgba(
+      255,
+      255,
+      255,
+      0.85
     );
+    display: block;
   }
 
-  .overlay h3 {
-    font-size: 1rem;
+  .cat-label {
+    font-family: Montserrat;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
   }
 
-  .overlay p {
-    font-size: 0.55rem;
+  .view-story-btn {
+    font-family: Montserrat;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    padding: 8px 16px;
   }
 
-  .view-link {
-    font-size: 0.55rem;
-  }
-
-  .pagination {
-    margin-top: 25px;
-    gap: 10px;
-  }
-}
-
-/* ================= SMALL MOBILE ================= */
-@media (max-width: 480px) {
-  .portfolio-slider {
-    height: 340px;
-  }
-
-  .portfolio-card {
-    width: 180px;
-    height: 260px;
-  }
-
-  .portfolio h2 {
-    font-size: 1.7rem;
-  }
-
-  .overlay h3 {
-    font-size: 0.9rem;
+  .card-overlay {
+    padding: 20px;
   }
 }

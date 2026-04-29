@@ -1,57 +1,35 @@
-import "./blog.css"
 
-export default function Blog(){
+import "./blog.css";
 
-  return(
-
+export default function Blog() {
+  return (
     <section className="blog">
-
-      <span className="tag">
-        FROM THE JOURNAL
-      </span>
-
-      <h2>
-        BLOG
-      </h2>
+      <span className="tag">FROM THE JOURNAL</span>
+      <h2>BLOG & STORY</h2>
 
       <div className="blogGrid">
+        {/* Card 1: Image Card */}
+       
 
-        {/* card 1 */}
-        <div className="blog-card">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552"/>
-
-          <p>
-            Elegant Wedding Moments
-          </p>
-        </div>
-
-        {/* center gold card */}
-        <div className="blog-card gold-card">
-
-          <div>
-            BEST WEDDING
-            IDEAS &
-            INSPIRATION
+        {/* Card 2: THE STORY CARD (Center Highlight) */}
+        <div className="blog-card story-card">
+          <div className="story-inner">
+            <span className="est">ESTD 2024</span>
+            <h3>OUR STORY</h3>
+            <p>
+              Founded by <strong>Issac Prem Kumar & Jeevan</strong>, what started as 
+              passion between two friends grew into a team of <strong>25+ creatives</strong>. 
+              From the first click to <strong>250+ weddings</strong>, we craft timeless memories.
+            </p>
+            <div className="founder-sign">The Wedding Craft</div>
           </div>
-
         </div>
 
-        {/* card 3 */}
-        <div className="blog-card">
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486"/>
-
-          <p>
-            Styling & Decor Guide
-          </p>
-        </div>
-
+       
       </div>
-
-      <button className="blog-btn">
-        VIEW BLOG
-      </button>
 
     </section>
 
   )
 }
+  

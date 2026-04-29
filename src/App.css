@@ -5,6 +5,7 @@
   --body-font: "Montserrat", sans-serif;
   --gold: #b08d57;
   --bg-color: #fcfaf7;
+  --text-color: #111111;
 }
 
 * {
@@ -24,19 +25,25 @@ body {
   overflow-x: hidden;
 }
 
-/* All headings */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+section {
+  width: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
   font-weight: 500;
   color: var(--text-color);
 }
 
-/* Paragraphs */
 p, span, li, a, button {
   font-family: var(--body-font);
 }
 
-/* Buttons */
 button {
   cursor: pointer;
 }

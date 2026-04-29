@@ -2,106 +2,122 @@ import "./Packages.css";
 
 const packagesData = [
   {
-    title: "Basic",
-    subtitle: "ONE PHOTOGRAPHER",
-    price: "₹49,999",
+    title: "Package 1",
+    subtitle: "WEDDING & RECEPTION",
+    price: "₹99,999",
     features: [
-      "1 Photographer",
-      "4 Hours of Photo Coverage",
-      "250 Edited Images",
-      "Photo Print Release"
+      "1 Traditional Photographer",
+      "1 Traditional Videographer",
+      "1 Assistant",
+      "1 Video Editor",
+      "1 Photo Editor",
+      "Album: Reception (250-300) Photos",
+      "Album: Wedding (200-250) Photos"
     ]
   },
   {
-    title: "Plus",
-    subtitle: "TWO PHOTOGRAPHERS + VIDEOGRAPHY",
-    price: "₹89,999",
-    badge: "Most Popular",
+    title: "Package 2",
+    subtitle: "PRE/POST WEDDING INCLUDED",
+    price: "₹1,59,999",
     features: [
-      "2 Photographers",
-      "1 Cinematographer",
-      "6 Hours of Photo & Video Coverage",
-      "500 Edited Images",
-      "Photo Print Release",
-      "1 Teaser Video",
-      "Full Event Video"
+      "1 Traditional Photographer",
+      "1 Traditional Videographer",
+      "1 Candid Photographer (or) Videographer",
+      "FREE Pre/Post Wedding (1 Photo + 1 Video + 1 Editor)",
+      "1 Assistant, 1 Video Editor, 1 Photo Editor",
+      "Album: Reception (250-300) Photos",
+      "Album: Wedding (200-250) Photos"
     ]
   },
   {
-    title: "Premium",
-    subtitle: "PHOTO + VIDEO + DRONE COVERAGE",
-    price: "₹1,29,999",
+    title: "Package 3",
+    subtitle: "CINEMATIC COVERAGE",
+    price: "₹2,14,999",
     features: [
-      "2 Photographers",
-      "2 Cinematographers",
-      "8 Hours of Photo & Video Coverage",
-      "900 Edited Images",
-      "Photo Print Release",
-      "1 Teaser Video",
-      "Full Event Video"
+      "1 Traditional Photographer & 1 Traditional Videographer",
+      "1 Candid Photographer & 1 Candid Videographer",
+      "FREE Pre/Post Wedding (Full Team & Editor)",
+      "1 Assistant, 1 Video Editor, 1 Photo Editor",
+      "Album: Reception (250-300) Photos",
+      "Album: Wedding (200-250) Photos"
+    ]
+  },
+  {
+    title: "Package 4",
+    subtitle: "FULL DRONE COVERAGE",
+    price: "₹2,29,999",
+    features: [
+      "1 Drone Videographer",
+      "1 Traditional Photo & 1 Traditional Video",
+      "1 Candid Photo & 1 Candid Video",
+      "FREE Pre/Post Wedding (Full Team & Editor)",
+      "1 Assistant, 1 Video Editor, 1 Photo Editor",
+      "Album: Reception (250-300) Photos",
+      "Album: Wedding (200-250) Photos"
+    ]
+  },
+  {
+    title: "Package 5",
+    subtitle: "THE ULTIMATE CRAFT",
+    price: "₹2,59,999",
+    features: [
+      "1 Traditional Photo & 1 Traditional Video",
+      "2 Candid Photographers & 1 Candid Videographer",
+      "FREE Pre/Post Wedding (Full Team & Editor)",
+      "1 Assistant, 1 Video Editor, 1 Photo Editor",
+      "Album: Reception (250-300) Photos",
+      "Album: Wedding (200-250) Photos"
     ]
   }
 ];
 
 export default function Packages() {
+  const whatsappNumber = "917092263880"; // Unga number-ah inga kudunga (with 91)
+
+  const handleBooking = (pkg) => {
+    const message = `Hello The Wedding Craft! I'm interested in ${pkg.title} (${pkg.subtitle}) priced at ${pkg.price}. Please provide more details.`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <section className="packages" id="packages">
-      
-      {/* Header */}
       <div className="packages-header">
         <p>PRICING</p>
-        <h2>Event Packages</h2>
+        <h2>The Wedding Craft Packages</h2>
       </div>
 
-      {/* Cards */}
       <div className="packages-container">
         {packagesData.map((item, index) => (
           <div
-            className={`package-card ${
-              item.badge ? "featured" : ""
-            }`}
+            className={`package-card ${item.badge ? "featured" : ""}`}
             key={index}
           >
-            {/* Badge */}
-            {item.badge && (
-              <div className="badge">
-                {item.badge}
-              </div>
-            )}
+            {item.badge && <div className="badge">{item.badge}</div>}
 
-            {/* Title */}
             <h3>{item.title}</h3>
-            <p className="subtitle">
-              {item.subtitle}
-            </p>
+            <p className="subtitle">{item.subtitle}</p>
 
-            {/* Price */}
             <div className="price-box">
               <h1>{item.price}</h1>
-              <span className="event-text">
-                /event
-              </span>
+              <span className="event-text">/ event</span>
             </div>
 
-            {/* Features */}
             <div className="features">
-              {item.features.map(
-                (feature, i) => (
-                  <p key={i}>
-                    {feature}
-                  </p>
-                )
-              )}
+              {item.features.map((feature, i) => (
+                <p key={i}>{feature}</p>
+              ))}
             </div>
 
-            {/* Fixed Button */}
-            <button className="package-btn">
-              Book Now ↗
+            <button 
+              className="package-btn" 
+              onClick={() => handleBooking(item)}
+            >
+              Book now ↗
             </button>
           </div>
         ))}
       </div>
-      
     </section>
   );
 }
