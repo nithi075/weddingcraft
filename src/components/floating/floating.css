@@ -16,23 +16,26 @@
   align-items: center;
   gap: 12px;
   padding: 14px 24px;
-  background: rgba(255, 255, 255, 0.85); /* Premium White Glass */
+
+  /* changed from white glass to dark glass */
+  background: rgba(15, 15, 15, 0.85);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(197, 160, 89, 0.4); /* Subtle Gold Border */
+
+  border: 1px solid rgba(197, 160, 89, 0.4);
   border-radius: 100px;
   text-decoration: none;
   z-index: 2;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Icon Styling - Using Button's Gold Color */
+/* Icon Styling */
 .icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #c5a059; /* Your Brand Gold */
+  color: #c5a059;
   filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3));
 }
 
@@ -43,19 +46,19 @@
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: #ffffff; /* changed from black */
 }
 
 /* Hover Effect */
 .floating-chat-glass:hover {
   transform: translateY(-8px) scale(1.05);
-  background: #c5a059; /* Switches to Gold on Hover */
+  background: #c5a059;
   border-color: #c5a059;
 }
 
 .floating-chat-glass:hover .icon-wrapper,
 .floating-chat-glass:hover .chat-label {
-  color: #ffffff; /* Turns white for contrast */
+  color: #ffffff;
 }
 
 /* CONSTANT GLOW EFFECT */
@@ -63,7 +66,11 @@
   position: absolute;
   width: 110%;
   height: 110%;
-  background: radial-gradient(circle, rgba(197, 160, 89, 0.6) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(197, 160, 89, 0.6) 0%,
+    transparent 70%
+  );
   border-radius: 100px;
   z-index: 1;
   animation: constant-glow 2.5s infinite alternate ease-in-out;
@@ -82,14 +89,18 @@
   }
 }
 
-/* Floating Animation for the whole button */
+/* Floating Animation */
 .floating-container {
   animation: float-box 4s infinite ease-in-out;
 }
 
 @keyframes float-box {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Mobile: Circle Only */
@@ -97,7 +108,7 @@
   .chat-label {
     display: none;
   }
-  
+
   .floating-chat-glass {
     padding: 18px;
     border-radius: 50%;

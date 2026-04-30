@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import Footer from "../../components/footer/footer";
 import "./gallerypage.css";
 
 const GalleryPage = () => {
@@ -65,7 +65,7 @@ const GalleryPage = () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          "http://localhost:5000/gallery/all"
+          "https://wc-backend-zr5t.onrender.com/gallery/all"
         );
         setAllImages(res.data);
       } catch (error) {

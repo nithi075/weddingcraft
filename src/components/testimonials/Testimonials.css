@@ -1,14 +1,14 @@
 .testimonials {
   padding: 60px 20px;
   text-align: center;
-  background: white;
+  background: #0f0f0f; /* changed from white */
 }
 
 /* small subtitle */
 .tag {
-  font-size: .6rem;
+  font-size: 0.6rem;
   letter-spacing: 3px;
-  color: #999;
+  color: #bdbdbd; /* updated */
   display: block;
   margin-bottom: 6px;
 }
@@ -19,6 +19,7 @@
   font-size: 1.8rem;
   letter-spacing: 2px;
   margin-bottom: 25px;
+  color: #ffffff; /* added */
 }
 
 /* banner */
@@ -27,8 +28,6 @@
   max-width: 950px;
   margin: auto;
   overflow: hidden;
-
-  /* smooth transition */
   animation: testimonialFade 0.8s ease-in-out;
 }
 
@@ -58,7 +57,6 @@
     rgba(197,160,89,.7),
     rgba(197,160,89,0)
   );
-
   color: white;
   display: flex;
   flex-direction: column;
@@ -77,7 +75,7 @@
 
 /* text */
 .testimonial-overlay p {
-  font-size: .75rem;
+  font-size: 0.75rem;
   line-height: 1.6;
   max-width: 260px;
   margin-bottom: 15px;
@@ -89,7 +87,7 @@
   border: 1px solid white;
   color: white;
   padding: 8px 16px;
-  font-size: .6rem;
+  font-size: 0.6rem;
   letter-spacing: 2px;
 }
 
@@ -106,7 +104,7 @@
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: #d8c5a2;
+  background: #444; /* darker inactive dots */
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -154,6 +152,6 @@
   }
 
   .testimonial-overlay p {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }

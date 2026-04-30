@@ -2,10 +2,11 @@
 
 :root {
     --gold: #c5a059;
-    --dark: #121212;
+    --dark: #ffffff;
     --white: #ffffff;
-    --bg-soft: #faf9f6;
-    --text-gray: #666666;
+    --bg-soft: #0f0f0f;
+    --card-dark: #1a1a1a;
+    --text-gray: #bdbdbd;
 }
 
 /* =========================
@@ -19,11 +20,11 @@
 .gallery-main-wrapper {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 90px 10px 60px; /* Mobile first spacing */
+    padding: 90px 10px 60px;
 }
 
 /* =========================
-   TABS (MOBILE SCROLL)
+   TABS
 ========================= */
 .text-tabs-wrapper {
     margin-bottom: 40px;
@@ -62,7 +63,7 @@
 }
 
 .nav-text-item.active {
-    color: var(--dark);
+    color: var(--white);
     border-bottom: 2px solid var(--gold);
 }
 
@@ -88,7 +89,7 @@
 .category-info h2 {
     font-family: "Cormorant Garamond", serif;
     font-size: 32px;
-    color: var(--dark);
+    color: var(--white);
     font-weight: 500;
 }
 
@@ -108,38 +109,45 @@
 }
 
 /* =========================
-   LUXURY GRID (MOBILE: 2 IN A ROW)
+   GRID
 ========================= */
 .luxury-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* FORCED 2 PER ROW ON MOBILE */
-    gap: 8px; /* Tight luxury gap */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
 }
 
-.collection-card, .grid-item-detail {
+.collection-card,
+.grid-item-detail {
     position: relative;
     overflow: hidden;
-    background: #fff;
-    aspect-ratio: 3/4; /* Maintains uniform look */
+    background: var(--card-dark);
+    aspect-ratio: 3/4;
 }
 
-.img-box, .img-wrapper {
+.img-box,
+.img-wrapper {
     width: 100%;
     height: 100%;
 }
 
-.img-box img, .img-wrapper img {
+.img-box img,
+.img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Card Overlays */
+/* Card Overlay */
 .card-content-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85) 0%,
+        transparent 60%
+    );
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -161,7 +169,7 @@
 }
 
 /* =========================
-   TABLET & DESKTOP (RESPONSIVE)
+   RESPONSIVE
 ========================= */
 @media (min-width: 768px) {
     .gallery-main-wrapper {
@@ -169,7 +177,7 @@
     }
 
     .luxury-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 in a row on tablets */
+        grid-template-columns: repeat(3, 1fr);
         gap: 25px;
     }
 
@@ -181,14 +189,15 @@
         font-size: 12px;
     }
 
-    .collection-card:hover img, .grid-item-detail:hover img {
+    .collection-card:hover img,
+    .grid-item-detail:hover img {
         transform: scale(1.08);
     }
 }
 
 @media (min-width: 1024px) {
     .luxury-grid {
-        grid-template-columns: repeat(3, 1fr); /* Can change to 4 if needed */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -200,8 +209,14 @@
 }
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .loader-container {
@@ -216,6 +231,7 @@
     grid-column: span 2;
     text-align: center;
     padding: 80px 20px;
+    color: white;
 }
 
 .back-home-btn {
@@ -229,90 +245,91 @@
     letter-spacing: 1px;
     cursor: pointer;
 }
+
+/* CTA Section */
 .gallery-package-cta {
-  text-align: center;
-  padding: 80px 20px;
-  background: #faf8f3;
-  margin-top: 60px;
-  border-top: 1px solid rgba(197, 160, 89, 0.15);
+    text-align: center;
+    padding: 80px 20px;
+    background: #111111;
+    margin-top: 60px;
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .gallery-package-cta h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  font-family: "Cormorant Garamond", serif;
-  color: var(--dark);
-  font-weight: 500;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-family: "Cormorant Garamond", serif;
+    color: white;
+    font-weight: 500;
 }
 
 .gallery-package-cta p {
-  color: var(--text-gray);
-  margin-bottom: 30px;
-  font-size: 1rem;
-  line-height: 1.7;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Premium Package Button */
 .view-package-btn {
-  background: transparent;
-  color: var(--gold);
-  border: 1.5px solid var(--gold);
-  padding: 14px 34px;
-  cursor: pointer;
-  border-radius: 50px;
-  font-size: 12px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+    padding: 14px 34px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-/* Gold fill animation */
 .view-package-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--gold);
-  transition: 0.4s ease;
-  z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    transition: 0.4s ease;
+    z-index: -1;
 }
 
 .view-package-btn:hover::before {
-  left: 0;
+    left: 0;
 }
 
 .view-package-btn:hover {
-  color: white;
-  transform: translateY(-4px);
-  box-shadow: 0px 10px 25px rgba(197, 160, 89, 0.25);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0px 10px 25px rgba(197, 160, 89, 0.25);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .gallery-package-cta {
-    padding: 60px 20px;
-  }
+    .gallery-package-cta {
+        padding: 60px 20px;
+    }
 
-  .gallery-package-cta h2 {
-    font-size: 2rem;
-  }
+    .gallery-package-cta h2 {
+        font-size: 2rem;
+    }
 
-  .gallery-package-cta p {
-    font-size: 0.95rem;
-  }
+    .gallery-package-cta p {
+        font-size: 0.95rem;
+    }
 
-  .view-package-btn {
-    padding: 12px 26px;
-    font-size: 11px;
-  }
+    .view-package-btn {
+        padding: 12px 26px;
+        font-size: 11px;
+    }
 }

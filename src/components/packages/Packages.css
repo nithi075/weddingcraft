@@ -3,7 +3,7 @@
 /* ================= PACKAGES SECTION ================= */
 .packages {
   padding: 80px 20px;
-  background: #fcfaf7;
+  background: #0f0f0f; /* changed from light */
   text-align: center;
   overflow: hidden;
 }
@@ -13,7 +13,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 0.65rem;
   letter-spacing: 3px;
-  color: #b08d57;
+  color: #c5a059;
   text-transform: uppercase;
   margin-bottom: 15px;
 }
@@ -23,7 +23,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 3rem;
   font-weight: 400;
-  color: #111;
+  color: #ffffff; /* changed */
   letter-spacing: 2px;
   margin-bottom: 50px;
 }
@@ -39,27 +39,26 @@
 
 /* ================= CARD ================= */
 .package-card {
-  background: white;
+  background: #1a1a1a; /* changed from white */
   padding: 40px 25px;
-  border: 1px solid #eee5d8;
+  border: 1px solid #2a2a2a;
   transition: 0.4s ease;
   position: relative;
   min-height: 550px;
 
-  /* for button bottom alignment */
   display: flex;
   flex-direction: column;
 }
 
 .package-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
 /* featured card */
 .package-card.featured {
-  background: #f4f1ea;
-  border: 1px solid #b08d57;
+  background: #222;
+  border: 1px solid #c5a059;
 }
 
 /* badge */
@@ -68,7 +67,7 @@
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: #b08d57;
+  background: #c5a059;
   color: white;
   padding: 6px 16px;
   font-size: 0.6rem;
@@ -81,7 +80,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 2rem;
   font-weight: 400;
-  color: #111;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
@@ -89,7 +88,7 @@
 .subtitle {
   font-family: "Montserrat", sans-serif;
   font-size: 0.7rem;
-  color: #777;
+  color: #bdbdbd;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 25px;
@@ -100,47 +99,45 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 3rem;
   font-weight: 400;
-  color: #b08d57;
+  color: #c5a059;
 }
 
 .package-card h1 span {
   font-size: 1rem;
-  color: #777;
+  color: #bdbdbd;
 }
 
 .event-text {
   font-family: "Montserrat", sans-serif;
   font-size: 0.8rem;
-  color: #666;
+  color: #d1d1d1;
   margin-bottom: 25px;
 }
 
 /* ================= FEATURES ================= */
 .features {
   text-align: left;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #333;
   padding-top: 20px;
   margin-top: 20px;
-
-  /* takes remaining space */
   flex-grow: 1;
 }
 
 .features p {
   font-family: "Montserrat", sans-serif;
   font-size: 0.8rem;
-  color: #666;
+  color: #d1d1d1;
   margin: 12px 0;
 }
 
 .features p::before {
   content: "✦ ";
-  color: #b08d57;
+  color: #c5a059;
 }
 
 /* ================= BUTTON ================= */
 .package-btn {
-  margin-top: auto; /* pushes button to bottom */
+  margin-top: auto;
   background: #c5a059;
   color: white;
   border: none;
@@ -155,7 +152,8 @@
 }
 
 .package-btn:hover {
-  background: #b08d57;
+  background: #ffffff;
+  color: #0f0f0f;
 }
 
 /* ================= TABLET ================= */
