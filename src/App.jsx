@@ -6,7 +6,7 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
-import Featured from "./components/featured/Featured";
+import Featured from "./components/featured/featured";
 import About from "./components/About/About";
 import Packages from "./components/packages/Packages";
 import Testimonials from "./components/testimonials/Testimonials";
