@@ -26,7 +26,7 @@ import InstagramUpload from "./pages/Admin/InstagramUpload";
 import Dashboard from "./pages/Admin/Dashboard";
 
 function HomePage() {
-const [menuOpen, setMenuOpen] = useState(false);
+ const [menuOpen, setMenuOpen] = useState(false);
 
 return (
 <> <section id="home"> <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> <Hero /> </section>
