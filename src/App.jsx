@@ -6,13 +6,22 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
+<<<<<<< HEAD
 import Featured from "./components/featured/Featured";
+=======
+import Featured from "./components/featured/featured";
+>>>>>>> 25b08cb885c61bc739806f0bc9d7891805028a5d
 import About from "./components/About/About";
 import Packages from "./components/packages/Packages";
 import Testimonials from "./components/testimonials/Testimonials";
 import Instagram from "./components/instagram/Instagram";
+<<<<<<< HEAD
 import Blog from "./components/blog/Blog";
 import Footer from "./components/footer/Footer";
+=======
+import Blog from "./components/blog/blog";
+import Footer from "./components/footer/footer";
+>>>>>>> 25b08cb885c61bc739806f0bc9d7891805028a5d
 import Location from "./components/location/Location";
 import FloatingChat from "./components/floating/floating";
 
@@ -101,4 +110,8 @@ function App() {
   );
 }
 
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> 25b08cb885c61bc739806f0bc9d7891805028a5d

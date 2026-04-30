@@ -143,3 +143,14 @@
     font-size: 2.1rem;
   }
 }
+
+/* desktop */
+@media (min-width: 1024px) {
+  .blog {
+    padding: 90px 20px;
+  }
+
+  .blog h2 {
+    font-size: 2.1rem;
+  }
+}
