@@ -6,22 +6,13 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
-<<<<<<< HEAD
 import Featured from "./components/featured/Featured";
-=======
-import Featured from "./components/featured/featured";
->>>>>>> 25b08cb885c61bc739806f0bc9d7891805028a5d
 import About from "./components/About/About";
 import Packages from "./components/packages/Packages";
 import Testimonials from "./components/testimonials/Testimonials";
 import Instagram from "./components/instagram/Instagram";
-<<<<<<< HEAD
 import Blog from "./components/blog/Blog";
 import Footer from "./components/footer/Footer";
-=======
-import Blog from "./components/blog/blog";
-import Footer from "./components/footer/footer";
->>>>>>> 25b08cb885c61bc739806f0bc9d7891805028a5d
 import Location from "./components/location/Location";
 import FloatingChat from "./components/floating/floating";
 
@@ -35,83 +26,70 @@ import InstagramUpload from "./pages/Admin/InstagramUpload";
 import Dashboard from "./pages/Admin/Dashboard";
 
 function HomePage() {
-  const [menuOpen, setMenuOpen] = useState(false);
+const [menuOpen, setMenuOpen] = useState(false);
 
-  return (
-    <>
-      <section id="home">
-        <Navbar
-          menuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
-        />
-        <Hero />
-      </section>
+return (
+<> <section id="home"> <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> <Hero /> </section>
 
-      <section id="services">
-        <Services />
-      </section>
 
-      <section id="gallery">
-        <Gallery />
-      </section>
+  <section id="services">
+    <Services />
+  </section>
 
-      <section id="featured">
-        <Featured />
-      </section>
+  <section id="gallery">
+    <Gallery />
+  </section>
 
-      <section id="about">
-        <About />
-      </section>
+  <section id="featured">
+    <Featured />
+  </section>
 
-      <section id="packages">
-        <Packages />
-      </section>
+  <section id="about">
+    <About />
+  </section>
 
-      <section id="testimonials">
-        <Testimonials />
-      </section>
+  <section id="packages">
+    <Packages />
+  </section>
 
-      <section id="instagram">
-        <Instagram />
-      </section>
+  <section id="testimonials">
+    <Testimonials />
+  </section>
 
-      <section id="blog">
-        <Blog />
-      </section>
+  <section id="instagram">
+    <Instagram />
+  </section>
 
-      <section id="location">
-        <Location />
-      </section>
+  <section id="blog">
+    <Blog />
+  </section>
 
-      <section id="contact">
-        <Footer />
-      </section>
+  <section id="location">
+    <Location />
+  </section>
 
-      <FloatingChat />
-    </>
-  );
+  <section id="contact">
+    <Footer />
+  </section>
+
+  <FloatingChat />
+</>
+
+
+);
 }
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/gallery" element={<Gallery />} />
-      <Route
-        path="/galleryDetails/:category"
-        element={<GalleryDetails />}
-      />
-      <Route path="/admin" element={<Dashboard />} />
-      <Route path="/gallery-upload" element={<GalleryUpload />} />
-      <Route path="/featured-upload" element={<FeaturedUpload />} />
-      <Route path="/instagram-upload" element={<InstagramUpload />} />
-      <Route path="/testimonial-upload" element={<TestimonialUpload />} />
-    </Routes>
-  );
+return ( <Routes>
+<Route path="/" element={<HomePage />} />
+<Route path="/gallery" element={<Gallery />} />
+<Route path="/galleryDetails/:category" element={<GalleryDetails />} />
+<Route path="/admin" element={<Dashboard />} />
+<Route path="/gallery-upload" element={<GalleryUpload />} />
+<Route path="/featured-upload" element={<FeaturedUpload />} />
+<Route path="/instagram-upload" element={<InstagramUpload />} />
+<Route path="/testimonial-upload" element={<TestimonialUpload />} /> </Routes>
+);
 }
 
-<<<<<<< HEAD
 export default App;
-=======
-export default App;
->>>>>>> 25b08cb885c61bc739806f0bc9d7891805028a5d
