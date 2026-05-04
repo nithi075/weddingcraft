@@ -1,27 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import "./Hero.css";
-import logoimg from "../../assets/logo.png";
 
-// hero images
-import hero1 from "../../assets/hero1.jpg";
-import hero2 from "../../assets/hero2.jpg";
-import hero3 from "../../assets/hero3.jpg";
+// Background Video - Unga video file path-ai inge kudunga
+import heroVideo from "../../assets/featured/wedding-video.mp4"; 
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState(0);
-  const heroImages = [hero1, hero2, hero3];
-
-  // Auto slide logic
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) =>
-        prev === heroImages.length - 1 ? 0 : prev + 1
-      );
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
 
   // Click handlers
   const handlePortfolioClick = () => {
@@ -35,21 +20,21 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
       
-      {/* ================= 1. NAVBAR SECTION ================= */}
-    
-      {/* ================= 2. BACKGROUND SLIDER ================= */}
+      {/* ================= 1. BACKGROUND VIDEO ================= */}
       <div className="hero-bg">
-        {heroImages.map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            alt={`hero-${index}`}
-            className={index === currentImage ? "active-slide" : ""}
-          />
-        ))}
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          className="hero-video"
+        >
+          <source src={heroVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
-      {/* ================= 3. HERO CONTENT SECTION ================= */}
+      {/* ================= 2. HERO CONTENT SECTION ================= */}
       <div className="hero-overlay">
         <span className="sub-title">Luxury Wedding Photography</span>
         

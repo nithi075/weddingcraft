@@ -98,10 +98,10 @@ export default function Packages() {
             <h3>{item.title}</h3>
             <p className="subtitle">{item.subtitle}</p>
 
-            <div className="price-box">
+            {/* <div className="price-box">
               <h1>{item.price}</h1>
               <span className="event-text">/ event</span>
-            </div>
+            </div> */}
 
             <div className="features">
               {item.features.map((feature, i) => (
