@@ -43,9 +43,7 @@ const WhatsAppPopup = () => {
         Manual-ah open panna intha button irukalaam. 
         Venaamna idhai remove pannidunga, timer mattum work aagum. 
       */}
-      <button className="open-popup-btn" onClick={togglePopup}>
-        CONTACT US
-      </button>
+  
 
       {isOpen && (
         <div className="popup-overlay">
