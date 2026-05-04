@@ -102,6 +102,7 @@ export default function Packages() {
               <h1>{item.price}</h1>
               <span className="event-text">/ event</span>
             </div> */}
+         
 
             <div className="features">
               {item.features.map((feature, i) => (

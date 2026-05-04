@@ -44,6 +44,8 @@ const WhatsAppPopup = () => {
         Venaamna idhai remove pannidunga, timer mattum work aagum. 
       */}
     
+  
+
       {isOpen && (
         <div className="popup-overlay">
           <div className="popup-content">
