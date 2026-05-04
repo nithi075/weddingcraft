@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './WhatsAppPopup.css'; // Mela kudutha CSS-ai intha file-il pottukonvum
+import React, { useState, useEffect } from 'react'; // useEffect saerthukonga
+import './WhatsAppPopup.css';
 
 const WhatsAppPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +7,16 @@ const WhatsAppPopup = () => {
     name: '',
     message: ''
   });
+
+  // Page load aagi 30 seconds kalithu popup vara intha logic
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 30000); // 30 seconds = 30000ms
+
+    // Component unmount aagum pothu timer-ai clean panna ithu mukkiyam
+    return () => clearTimeout(timer);
+  }, []);
 
   const togglePopup = () => setIsOpen(!isOpen);
 
@@ -16,8 +26,6 @@ const WhatsAppPopup = () => {
 
   const sendToWhatsApp = () => {
     const { name, message } = formData;
-    
-    // Unga WhatsApp Number-ai inge maathavum
     const phoneNumber = "917092263880"; 
 
     if (!name || !message) {
@@ -31,12 +39,14 @@ const WhatsAppPopup = () => {
 
   return (
     <>
-      {/* Trigger Button - Idhai unga Footer-il enga venaalum vaikkalam */}
+      {/* 
+        Manual-ah open panna intha button irukalaam. 
+        Venaamna idhai remove pannidunga, timer mattum work aagum. 
+      */}
       <button className="open-popup-btn" onClick={togglePopup}>
         CONTACT US
       </button>
 
-      {/* Popup Overlay */}
       {isOpen && (
         <div className="popup-overlay">
           <div className="popup-content">

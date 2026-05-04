@@ -24,6 +24,7 @@ import FeaturedUpload from "./pages/Admin/FeaturedUpload";
 import TestimonialUpload from "./pages/Admin/TestimonialUpload";
 import InstagramUpload from "./pages/Admin/InstagramUpload";
 import Dashboard from "./pages/Admin/Dashboard";
+import WhatsAppPopup from "./components/WhatsAppPopup/WhatsAppPopup";
 
 function HomePage() {
  const [menuOpen, setMenuOpen] = useState(false);
@@ -73,6 +74,7 @@ return (
   </section>
 
   <FloatingChat />
+  <WhatsAppPopup/>
 </>
 
 
